@@ -24,6 +24,9 @@ library(MASS)
 morph_data <- read.csv(file="data/raw/weevils.csv", header=TRUE, sep=",", dec=".") %>%
   as.data.frame()
 
+male_male <- read.csv(file="data/raw/male_male_combat.csv", header=TRUE, sep=",", dec=".") %>%
+  as.data.frame()
+
 morph_data <- morph_data %>%
   mutate(fem=rowMeans(dplyr::select(., l_fem, r_fem), na.rm = TRUE)) %>%
   mutate(tib=rowMeans(dplyr::select(., l_tib, r_tib), na.rm = TRUE)) %>%
@@ -191,8 +194,53 @@ p_val <- mean(abs(null_slopes) >= abs(obs_slope)) # no assortative mating
 # male-male competition
 # =========================
 
+male_male <- male_male
+  
+library(dplyr)
 
+combat2 <- male_male %>%
+  left_join(
+    males %>% dplyr::select(id, total_body, fem),
+    by = c("winner_id" = "id")
+  ) %>%
+  rename(
+    total_body_win = total_body,
+    fem_win        = fem
+  ) %>%
+  left_join(
+    males %>% dplyr::select(id, total_body, fem),
+    by = c("loser_id" = "id")
+  ) %>%
+  rename(
+    total_body_lose = total_body,
+    fem_lose        = fem
+  )
 
+combat2 <- combat2 %>%
+  mutate(
+    body_diff = total_body_win - total_body_lose,
+    fem_diff  = fem_win - fem_lose
+  ) # positive = winner is bigger
 
+t.test(combat2$body_diff)
+t.test(combat2$fem_diff)
+
+long <- bind_rows(
+  male_male %>% mutate(id = winner_id, opponent = loser_id, win = 1),
+  male_male %>% mutate(id = loser_id,  opponent = winner_id, win = 0)
+) %>%
+  left_join(males %>% dplyr::select(id, total_body, fem), by = "id") %>%
+  left_join(males %>% dplyr::select(id, total_body, fem),
+            by = c("opponent" = "id"),
+            suffix = c("", "_opp")) %>%
+  mutate(
+    body_diff = total_body - total_body_opp,
+    fem_diff  = fem - fem_opp
+  )
+
+combat_model <- glm(win ~ body_diff + fem_diff,
+    family = binomial,
+    data = long)
+summary(combat_model)
 
 ## ---- end
