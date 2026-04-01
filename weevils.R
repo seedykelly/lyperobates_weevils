@@ -25,8 +25,9 @@ morph_data <- read.csv(file="data/raw/weevils.csv", header=TRUE, sep=",", dec=".
   as.data.frame()
 
 morph_data <- morph_data %>%
-  mutate(fem=rowMeans(select(., l_fem, r_fem), na.rm = TRUE)) %>%
-  mutate(tib=rowMeans(select(., l_tib, r_tib), na.rm = TRUE))
+  mutate(fem=rowMeans(dplyr::select(., l_fem, r_fem), na.rm = TRUE)) %>%
+  mutate(tib=rowMeans(dplyr::select(., l_tib, r_tib), na.rm = TRUE)) %>%
+  mutate(total_body=tot_abdo+thorax)
 
 # =============================
 # selection analysis
@@ -36,33 +37,33 @@ morph_data <- morph_data %>%
 males <- morph_data %>%
   dplyr::filter(sex=="m")
 
-male.gam<-gam(mated~s(tot_abdo)+s(fem)+s(tib),family=binomial(link="logit"),method="GCV.Cp", data=males)
-male.grad<-gam.gradients(mod = male.gam,phenotype=c("tot_abdo","fem","tib"),se.method="boot.para",n.boot=1000,standardize=TRUE)
+male.gam<-gam(mated~s(total_body)+s(fem)+s(tib),family=binomial(link="logit"),method="GCV.Cp", data=males)
+male.grad<-gam.gradients(mod = male.gam,phenotype=c("total_body","fem","tib"),se.method="boot.para",n.boot=1000,standardize=TRUE)
 
 male.estimates<-data.frame(male.grad$ests)
 
 ## need to double the (quadratic) gamma gradient
-female.estimates[6,1]<-female.estimates[6,1]*2
-female.estimates[7,1]<-female.estimates[7,1]*2
-female.estimates[8,1]<-female.estimates[8,1]*2
-female.estimates[9,1]<-female.estimates[9,1]*2
-female.estimates[10,1]<-female.estimates[10,1]*2
-save(female.estimates, file = "female.estimates.RData")
+male.estimates[6,1]<-male.estimates[6,1]*2
+male.estimates[7,1]<-male.estimates[7,1]*2
+male.estimates[8,1]<-male.estimates[8,1]*2
+male.estimates[9,1]<-male.estimates[9,1]*2
+male.estimates[10,1]<-male.estimates[10,1]*2
+save(male.estimates, file = "male.estimates.RData")
 
 #male selection differentials
-m.abdomen <- moments.differentials(z=males$tot_abdo,W=males$mated, n.boot=10000, standardized=TRUE)
+m.body <- moments.differentials(z=males$total_body,W=males$mated, n.boot=10000, standardized=TRUE)
 m.fem <- moments.differentials(z=males$fem,W=males$mated, n.boot=10000, standardized=TRUE)
 m.tib <- moments.differentials(z=males$tib,W=males$mated, n.boot=10000, standardized=TRUE)
 
 # plot abdoment length
-m.abdomen <- fitness.landscape(mod=male.gam,phenotype="tot_abdo",covariates=c("tib","fem"),PI.method="boot.para")
+m.body <- fitness.landscape(mod=male.gam,phenotype="total_body",covariates=c("tib","fem"),PI.method="boot.para")
 par(mar=c(6,6,4,4))
-plot(m.abdomen$points[,1],m.abdomen$Wbar,type="l", ylim=c(0,1),xlab="Abdomen length (mm)",ylab="Mating success",cex.lab=2,cex.axis=1.5)
-lines(m.abdomen$points[,1],m.abdomen$WbarPI[1,],lty=2)
-lines(m.abdomen$points[,1],m.abdomen$WbarPI[2,],lty=2)
+plot(m.body$points[,1],m.body$Wbar,type="l", ylim=c(0,1),xlab="Body length (mm)",ylab="Mating success",cex.lab=2,cex.axis=1.5)
+lines(m.body$points[,1],m.body$WbarPI[1,],lty=2)
+lines(m.body$points[,1],m.body$WbarPI[2,],lty=2)
 
 # plot femur length
-m.femur <- fitness.landscape(mod=male.gam,phenotype="fem",covariates=c("tib","tot_abdo"),PI.method="boot.para")
+m.femur <- fitness.landscape(mod=male.gam,phenotype="fem",covariates=c("tib","total_body"),PI.method="boot.para")
 par(mar=c(6,6,4,4))
 plot(m.femur$points[,1],m.femur$Wbar,type="l", ylim=c(0,1),xlab="Femur length (mm)",ylab="Mating success",cex.lab=2,cex.axis=1.5)
 lines(m.femur$points[,1],m.femur$WbarPI[1,],lty=2)
@@ -74,16 +75,16 @@ par(xpd = NA, # switch off clipping, necessary to always see axis labels
     oma = c(2, 2, 0, 0), # move plot to the right and up
     mgp = c(2, 1, 0) # move axis labels closer to axis
 ) 
-vis.gam(male.gam,view=c("tot_abdo","fem"),color="heat",plot.type = "persp",  type="response",theta=155,
-        xlab="\nAbdomen length", ylab="\nFemur length",zlab="\nFitness")
+vis.gam(male.gam,view=c("total_body","fem"),color="heat",plot.type = "persp",  type="response",theta=155,
+        xlab="\nBody length", ylab="\nFemur length",zlab="\nFitness")
 male.proj<-recordPlot()
 
 # female selection analysis
 females <- morph_data %>%
   dplyr::filter(sex=="f")
 
-female.gam<-gam(mated~s(tot_abdo)+s(fem)+s(tib),family=binomial(link="logit"),method="GCV.Cp", data=females)
-female.grad<-gam.gradients(mod = female.gam, phenotype=c("tot_abdo","fem","tib"),se.method="boot.para",n.boot=1000,standardize=TRUE)
+female.gam<-gam(mated~s(total_body)+s(fem)+s(tib),family=binomial(link="logit"),method="GCV.Cp", data=females)
+female.grad<-gam.gradients(mod = female.gam, phenotype=c("total_body","fem","tib"),se.method="boot.para",n.boot=1000,standardize=TRUE)
 
 female.estimates<-data.frame(female.grad$ests)
 
@@ -96,19 +97,19 @@ female.estimates[10,1]<-female.estimates[10,1]*2
 save(female.estimates, file = "female.estimates.RData")
 
 # female selection differentials
-f.abdomen <- moments.differentials(z=females$tot_abdo,W=females$mated, n.boot=10000, standardized=TRUE)
+f.body <- moments.differentials(z=females$tot_abdo,W=females$mated, n.boot=10000, standardized=TRUE)
 f.fem <- moments.differentials(z=females$fem,W=females$mated, n.boot=10000, standardized=TRUE)
 f.tib <- moments.differentials(z=females$tib,W=females$mated, n.boot=10000, standardized=TRUE)
 
 # plot abdoment length
-f.abdomen <- fitness.landscape(mod=female.gam,phenotype="tot_abdo",covariates=c("tib","fem"),PI.method="boot.para")
+f.body <- fitness.landscape(mod=female.gam,phenotype="total_body",covariates=c("tib","fem"),PI.method="boot.para")
 par(mar=c(6,6,4,4))
-plot(f.abdomen$points[,1],f.abdomen$Wbar,type="l", ylim=c(0,1),xlab="Abdomen length (mm)",ylab="Mating success",cex.lab=2,cex.axis=1.5)
-lines(f.abdomen$points[,1],f.abdomen$WbarPI[1,],lty=2)
-lines(f.abdomen$points[,1],f.abdomen$WbarPI[2,],lty=2)
+plot(f.body$points[,1],f.body$Wbar,type="l", ylim=c(0,1),xlab="Body length (mm)",ylab="Mating success",cex.lab=2,cex.axis=1.5)
+lines(f.body$points[,1],f.body$WbarPI[1,],lty=2)
+lines(f.body$points[,1],f.body$WbarPI[2,],lty=2)
 
 # plot femur length
-f.femur <- fitness.landscape(mod=female.gam,phenotype="fem",covariates=c("tib","tot_abdo"),PI.method="boot.para")
+f.femur <- fitness.landscape(mod=female.gam,phenotype="fem",covariates=c("tib","total_body"),PI.method="boot.para")
 par(mar=c(6,6,4,4))
 plot(f.femur$points[,1],f.femur$Wbar,type="l", ylim=c(0,1),xlab="Femur length (mm)",ylab="Mating success",cex.lab=2,cex.axis=1.5)
 lines(f.femur$points[,1],f.femur$WbarPI[1,],lty=2)
@@ -120,12 +121,12 @@ dev.off()
 # female fecundity
 # =========================
 
-female.fecundity <- glm.nb(eggs ~ log(tot_abdo), data=females)
+female.fecundity <- glm.nb(eggs ~ log(total_body), data=females)
 summary(female.fecundity) # strong fecundity selection
 
 newdat <- data.frame(
-  tot_abdo = seq(min(females$tot_abdo),
-                 max(females$tot_abdo),
+  total_body = seq(min(females$total_body),
+                 max(females$total_body),
                  length.out = 100)
 )
 
@@ -136,16 +137,16 @@ newdat$fit <- exp(pred$fit)
 newdat$lwr <- exp(pred$fit - 1.96 * pred$se.fit)
 newdat$upr <- exp(pred$fit + 1.96 * pred$se.fit)
 
-female.fecundity.plot <- ggplot(females, aes(x = tot_abdo, y = eggs)) +
+female.fecundity.plot <- ggplot(females, aes(x = total_body, y = eggs)) +
       geom_point(alpha = 0.5) +
-      geom_line(data = newdat, aes(x = tot_abdo, y = fit),
+      geom_line(data = newdat, aes(x = total_body, y = fit),
             color = "blue", linewidth = 1) +
       geom_ribbon(data = newdat,
-              aes(x = tot_abdo, ymin = lwr, ymax = upr),
+              aes(x = total_body, ymin = lwr, ymax = upr),
               inherit.aes = FALSE,
               alpha = 0.2) +
       scale_x_log10() +
-      labs(x = "Abdomen size (log scale)",
+      labs(x = "Body size (mm, log scale)",
                y = "Fecundity (number of eggs)") +
       theme_classic()
 
