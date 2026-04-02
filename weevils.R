@@ -10,15 +10,13 @@ library(kableExtra)
 library(knitr)
 library(officedown)
 library(tidybayes)
-library(brms)
-library(broom.mixed)
-library(parameters)
-library(posterior)
 library(gsg)
 library(mgcv)
 library(MASS)
+library(tibble)
+library(stringr)
 
-#install.packages("~/Documents/Action/gsg_2.0.tar", repos = NULL, type = "source")
+# install.packages("~/Documents/Action/gsg_2.0.tar", repos = NULL, type = "source")
 
 #### read in data file ####
 morph_data <- read.csv(file="data/raw/weevils.csv", header=TRUE, sep=",", dec=".") %>%
@@ -77,9 +75,8 @@ male.estimates[4,2]<-male.estimates[4,2]*2
 save(male.estimates, file = "male.estimates.RData")
 
 #male selection differentials
-m.body <- moments.differentials(z=males$total_body,W=males$mated, n.boot=10000, standardized=TRUE)
-m.fem <- moments.differentials(z=males$fem,W=males$mated, n.boot=10000, standardized=TRUE)
-m.tib <- moments.differentials(z=males$tib,W=males$mated, n.boot=10000, standardized=TRUE)
+m.body <- moments.differentials(z=males$total_body, W=males$mated, n.boot=10000, standardized=TRUE)
+m.leg <- moments.differentials(z=males$total_leg, W=males$mated, n.boot=10000, standardized=TRUE)
 
 # plot body length
 m.body <- fitness.landscape(mod=male.gam,phenotype="total_body",covariates=c("total_leg"),PI.method="boot.para")
@@ -124,8 +121,8 @@ save(female.estimates, file = "female.estimates.RData")
 # female selection differentials
 f.body <- moments.differentials(z=females$total_body,W=females$mated, n.boot=10000, standardized=TRUE)
 f.leg <- moments.differentials(z=females$total_leg,W=females$mated, n.boot=10000, standardized=TRUE)
--0.57^2
-# plot abdoment length
+
+# plot body length
 f.body <- fitness.landscape(mod=female.gam,phenotype="total_body",covariates=c("total_leg"),PI.method="boot.para")
 par(mar=c(6,6,4,4))
 plot(f.body$points[,1],f.body$Wbar,type="l", ylim=c(0,1),xlab="Body length (mm)",ylab="Mating success",cex.lab=2,cex.axis=1.5)
@@ -140,6 +137,224 @@ lines(f.leg$points[,1],f.leg$WbarPI[1,],lty=2)
 lines(f.leg$points[,1],f.leg$WbarPI[2,],lty=2)
 
 dev.off()
+
+# selection table
+format_diff <- function(x, trait){
+  x %>%
+    rownames_to_column("component") %>%
+    dplyr::select(component, Coefficient, SE, `P-value`) %>%
+    mutate(trait = trait) %>%
+    pivot_wider(
+      names_from = component,
+      values_from = c(Coefficient, SE, `P-value`),
+      names_glue = "{.value}_{component}"
+    ) %>%
+    rename_with(~ gsub(" 1$", "", .x)) %>%
+    rename_with(~ gsub("P-value", "pvalue", .x))
+}
+
+format_grad <- function(x){
+  x %>%
+    rownames_to_column("term") %>%
+    mutate(
+      type = case_when(
+        str_detect(term, "^B-") ~ "beta",
+        str_detect(term, "^G-") ~ "gamma"
+      ),
+      trait = str_remove(term, "^[BG]-"),
+      trait = case_when(
+        trait == "total_body" ~ "body length",
+        trait == "total_leg" ~ "leg length",
+        TRUE ~ trait
+      )
+    ) %>%
+    dplyr::select(trait, type, estimates, SE, P.value) %>%
+    pivot_wider(
+      names_from = type,
+      values_from = c(estimates, SE, P.value),
+      names_glue = "{type}_{.value}"
+    ) %>%
+    rename(
+      beta = beta_estimates,
+      beta_se = beta_SE,
+      beta_p = beta_P.value,
+      gamma = gamma_estimates,
+      gamma_se = gamma_SE,
+      gamma_p = gamma_P.value
+    )
+}
+
+male_diff <- bind_rows(
+  format_diff(m.body, "body length"),
+  format_diff(m.leg, "leg length")
+)
+
+male_grad <- format_grad(male.estimates)
+
+male_table <- left_join(male_diff, male_grad, by = "trait") %>%
+  mutate(sex = "Male")
+
+female_diff <- bind_rows(
+  format_diff(f.body, "body length"),
+  format_diff(f.leg, "leg length")
+)
+
+female_grad <- format_grad(female.estimates)
+
+female_table <- left_join(female_diff, female_grad, by = "trait") %>%
+  mutate(sex = "Female")
+
+final_table <- bind_rows(female_table, male_table)
+
+final_table <- final_table %>%
+  mutate(
+    S = sprintf("%.3f ± %.3f", Coefficient_S, SE_S),
+    S_p = sprintf("%.3f", pvalue_S),
+    C = sprintf("%.3f ± %.3f", Coefficient_C, SE_C),
+    C_p = sprintf("%.3f", pvalue_C),
+    beta = sprintf("%.3f ± %.3f", beta, beta_se),
+    beta_p = sprintf("%.3f", beta_p),
+    gamma = sprintf("%.3f ± %.3f", gamma, gamma_se),
+    gamma_p = sprintf("%.3f", gamma_p)
+  ) %>%
+  select(sex, trait, S, S_p, C, C_p, beta, beta_p, gamma, gamma_p)
+
+library(flextable)
+
+ft <- flextable(final_table)
+
+ft <- ft %>%
+  set_header_labels(
+    sex = "Sex",
+    trait = "Trait",
+    S = "S ± SE",
+    S_p = "P",
+    C = "C ± SE",
+    C_p = "P",
+    beta = "β ± SE",
+    beta_p = "P",
+    gamma = "γ ± SE",
+    gamma_p = "P"
+  ) %>%
+  theme_booktabs() %>%
+  autofit()
+
+ft <- bold(ft, i = ~ as.numeric(S_p) < 0.05, j = "S_p", bold = TRUE)
+ft <- bold(ft, i = ~ as.numeric(C_p) < 0.05, j = "C_p", bold = TRUE)
+ft <- bold(ft, i = ~ as.numeric(beta_p) < 0.05, j = "beta_p", bold = TRUE)
+ft <- bold(ft, i = ~ as.numeric(gamma_p) < 0.05, j = "gamma_p", bold = TRUE)
+
+
+
+###474747847
+#mutate the selection differential output into a format suitable for kable and publication
+
+format_gsg <- function(x, trait_name) {
+  x %>%
+    rownames_to_column(var = "component") %>%
+    dplyr::select(component, Coefficient, SE, `P-value`) %>%  # drops the "1" column
+    pivot_wider(
+      names_from = component,
+      values_from = c(Coefficient, SE, `P-value`),
+      names_glue = "{.value}_{component}"
+    ) %>%
+    rename_with(~ gsub(" 1$", "", .x)) %>%
+    mutate(trait = trait_name) %>%
+    rename_with(~ gsub("P-value", "pvalue", .x)) %>%  # <-- key line
+    relocate(trait)
+}
+
+format_gsg(m.body, "body length")
+
+m.differentials <- rbind(m.body, m.leg)
+save(m.differentials, file="m.differentials.RData")
+
+m.differentials.table <- select(m.differentials.table, trait, S_coefficient, S_SE, S_Pvalue, C_coefficient, C_SE, C_Pvalue) %>%
+  unite(S_coefficient, c(S_coefficient, S_SE), sep = " ± ", remove = TRUE) %>%
+  unite(C_coefficient, c(C_coefficient, C_SE), sep = " ± ", remove = TRUE)
+
+#put analysis results in a tidy table that will be saved and formatted with kable below
+male.estimates<-setNames(cbind(rownames(male.estimates), male.estimates, row.names = NULL), 
+                         c("trait", "estimates", "SE", "P.value"))
+m.linear.estimates<-male.estimates %>%
+  mutate_if(is.numeric, funs(sprintf("%4.3f", .))) %>%
+  slice(1:10) %>%#if number of traits in ff.female changes then this must change accordingly
+  separate(trait, c("type", "trait"),"-") %>%
+  tidyr::gather("variable", "value", -type, -trait)
+male.lin.estimates<-dcast(m.linear.estimates, trait~type+variable)
+#re-order columns to match slection gradient table
+male.lin.estimates.3<-select(male.lin.estimates, trait, B_estimates, B_SE, B_P.value, G_estimates,G_SE, G_P.value) %>%
+  unite(B_estimates, c(B_estimates, B_SE), sep = " ± ", remove = TRUE) %>%
+  unite(G_estimates, c(G_estimates, G_SE), sep = " ± ", remove = TRUE)
+
+m.selection.estimates<-merge(m.differentials.table,male.lin.estimates.3)
+save(m.selection.estimates, file = "m.selection.estimates.RData")
+
+load(file = "m.selection.estimates.RData")
+load(file = "f.selection.estimates.RData")
+selection.table<-rbind(f.selection.estimates, m.selection.estimates)
+category = c(rep("(a) Females", 5), rep("(b) Males", 5))
+total.estimates.2<-mutate(total.estimates,trait = recode(trait, 
+                                                         "body.length" = "Body length",
+                                                         "elytra.width"="Elytra width",
+                                                         "tibia.length"= "Tibia length",
+                                                         "tibia.width"="Tibia width",
+                                                         "wing.length"="Wing length")) %>%
+  unite(S_coefficient, c(S_coefficient), sep = "", remove = TRUE) %>%
+  unite(C_coefficient, c(C_coefficient), sep = "", remove = TRUE) %>%
+  unite(B_estimates, c(B_estimates), sep = "", remove = TRUE) %>%
+  unite(G_estimates, c(G_estimates), sep = "", remove = TRUE) %>%
+  mutate(category=category) %>%
+  as_grouped_data(groups = c("category"), columns=NULL) %>%
+  flextable(col_keys = c("trait", "S_coefficient","S_Pvalue", "C_coefficient","C_Pvalue", "sep1",
+                         "B_estimates", "B_P.value", "G_estimates", "G_P.value")) %>%
+  flextable::compose(
+    i = ~ !is.na(category), # when var_group not NA
+    j = "trait", # on column "var"
+    # create a paragraph containing a chunk containing value of `var_group`
+    value = as_paragraph(as_chunk(category))) %>%
+  set_header_labels(trait = "Trait", S_coefficient = "Si ± SE", S_Pvalue = "P",
+                    C_coefficient = "Ci ± SE", C_Pvalue = "P", B_estimates = "Bi ± SE", B_P.value= "P",G_estimates ="gammai ± SE",
+                    G_P.value =" P", top = FALSE ) %>%
+  compose(part = "header", j = "S_coefficient",
+          value = as_paragraph(as_i("S"), as_sub("i"), " ± SE")) %>%
+  compose(part = "header", j = "C_coefficient",
+          value = as_paragraph(as_i("C"), as_sub("i"), " ± SE")) %>%
+  compose(part = "header", j = "B_estimates",
+          value = as_paragraph(as_i("\u03B2"), as_sub("i"), " ± SE")) %>%
+  compose(part = "header", j = "G_estimates",
+          value = as_paragraph(as_i("\u03B3"), as_sub("i"), " ± SE")) %>%
+  add_header(S_coefficient = "Differentials", S_Pvalue = "Differentials", C_coefficient = "Differentials",
+             C_Pvalue = "Differentials", B_estimates="Gradients", B_P.value= "Gradients", G_estimates ="Gradients", 
+             G_P.value="Gradients", top = TRUE ) %>%
+  merge_h(part = "header") %>%
+  align(i=c(1,7), align = "left", part ="body") %>%
+  bold(i=c(1,2),part = "header") %>%
+  align(i=c(2:4), align = "right", part ="body") %>%
+  empty_blanks() %>%
+  border(i=1, border.top=fp_border(color="black", width=2), part="header") %>%
+  hline(i=1, border=fp_border(color="transparent", width=2), part="header") %>%
+  hline(i=2, part="header",border=fp_border(color="black", width=2)) %>%
+  hline(i=1, j=c(2:5, 7:10), part="header",border=fp_border(color="black", width=1)) %>%
+  hline(i=2, j=4, part="header",border=fp_border(color="black", width=2)) %>%
+  hline(i=12, part="body",border=fp_border(color="black", width=2)) %>%
+  bold(i=c(1,7),part = "body") %>%
+  bold(i=c(5:6), j=c(2:3), part = "body") %>%
+  bold(i=c(2,3,5,6), j=c(7:8), part = "body") %>%
+  bold(i=c(2,3,4,6), j=c(9:10), part = "body") %>%
+  bold(i=c(8, 10:12), j=c(2:3), part = "body") %>%
+  bold(i=c(10:11), j=c(4:5), part = "body") %>%
+  bold(i=c(8,10:12), j=c(7:8), part = "body") %>%
+  bold(i=c(8,9,12), j=c(9:10), part = "body") %>%
+  autofit() %>%
+  set_caption(paste("(\\#tab:total-selection) Selection differentials and gradients (± se) for (a) female and
+                    (b) male Japanese beetles (*Popillia japonica*) from models including body length, elytra width, 
+                    wing length tibia width, and tibia length as covariates and relative fitness (0=unmated; 1=mated) 
+                    as the response variable. Traits were standardized to unit variance prior to analysis. N= ",female.unmated.sample.size," 
+                    unmated females; N=",female.mated.sample.size," mated females; N= ",male.unmated.sample.size," unmated males; 
+                    N= ",male.mated.sample.size," mated males. Standard errors were based on 10000 (selection differentials) or 
+                    1000 (selection gradients) bootstraps."))
+total.estimates.2
 
 # =========================
 # female fecundity
