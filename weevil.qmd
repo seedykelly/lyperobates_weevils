@@ -1,0 +1,115 @@
+---
+title: "Sexual size dimorphism in a flightless weevil is driven by fecundity selection and multivariate sexual selection"
+
+authors:
+  - name: Clint D. Kelly
+    affiliations:
+      - ref: cdk
+    corresponding: true
+    email: kelly.clint@uqam.ca
+    orcid: 0000-0002-0693-7211
+    
+affiliations:
+  - id: cdk
+    name: Département des Sciences biologiques, Université du Québec à Montréal, Montréal, Canada
+
+filters:
+  - authors-block
+  - iagopinal/figure-table-formatter
+  
+file-import: true
+
+format:
+  docx:
+    toc: false
+    reference-doc: word-style-template.docx
+bibliography: Bibliography.bib
+csl: evolution.csl
+---
+
+```{r echo=FALSE}
+knitr::read_chunk('scripts/weevils.R')
+```
+
+```{r analysis, include=FALSE,echo=FALSE, warning=FALSE, results="hide"}
+```
+
+# Introduction
+Sexual size dimorphism (SSD)—the systematic differences in body size between males and females—constitutes a widespread and evolutionarily significant feature of animal morphology (Darwin, 1871; Fairbairn, 1997). The direction and magnitude of SSD exhibit considerable variation across taxa, reflecting the balance of sex-specific selection pressures on body size (Blanckenhorn, 2000; Fairbairn et al., 2007). In many species, male-biased SSD is attributed to sexual selection arising from male–male competition or female choice (Andersson, 1994), while female-biased SSD is commonly linked to fecundity selection, wherein increased body size enhances reproductive output (Shine, 1988; Honěk, 1993).Fecundity selection is widely expected to favor larger females, particularly in insects, where body size often positively correlates with egg production (Honěk, 1993; Kingsolver & Pfennig, 2004). However, the presence of female-biased SSD cannot be explained solely by fecundity selection. The evolution of SSD critically depends on the strength and direction of sexual selection acting on males (Fairbairn, 1997; Blanckenhorn, 2000). When sexual selection favors increased male size—such as in systems where males defend mates or resources—male-biased SSD may emerge, or female-biased SSD may be reduced (Andersson, 1994; Emlen & Oring, 1977). Conversely, when sexual selection is weak or favors smaller, more mobile males, female-biased SSD is more likely to evolve (Ghiselin, 1974; Blanckenhorn et al., 2007).Selection for smaller male size is predicted in scramble-competitive mating systems, where reproductive success hinges on efficiently locating and securing mates rather than on direct contests or resource defense (Andersson, 1994; Moya-Laraño et al., 2002). In such scenarios, smaller males may benefit from enhanced mobility, reduced energetic demands, or improved search efficiency (Blanckenhorn et al., 2007; Moya-Laraño et al., 2002). In contrast, in systems characterized by male–male contest competition, larger males are often favored due to their ability to exclude rivals and resist usurpation (Emlen & Oring, 1977; Andersson, 1994).Patterns of assortative mating provide additional insight into the operation of sexual selection on body size (Crespi, 1989; Jiang et al., 2013). If larger males are more successful at securing access to larger, potentially more fecund females, positive size-assortative mating is expected (Crespi, 1989). Conversely, if smaller males are more efficient at locating or monopolizing larger females, negative size-assortative mating may arise (Foellmer & Fairbairn, 2005). Thus, the direction of assortative mating can illuminate how selection acts on male body size within a given mating system (Jiang et al., 2013).Weevils (Curculionoidea) exhibit substantial diversity in their ecology and mating systems, making them valuable for testing these ideas (Toju & Sota, 2006); however, the selective mechanisms underlying SSD remain poorly characterized for many taxa. Lyperobates weevils, a genus of flightless, ground-dwelling beetles endemic to New Zealand, are typically associated with alpine and subalpine habitats. These nocturnal insects inhabit structurally complex environments, where individuals emerge at night to forage and presumably locate mates. Notably, males do not appear to defend mating-related resources, suggesting a scramble-competitive mating system (Andersson, 1994; Blanckenhorn et al., 2007) in which mate encounter rates and search efficiency play critical roles.In this study, we investigate sexual size dimorphism in an undescribed species of *Lyperobates* (hereafter *Lyperobates* sp. A) weevil using a combination of observational and analytical approaches. We test four predictions: First, we predict that fecundity selection favors larger females, resulting in a positive relationship between female body size and reproductive output (Honěk, 1993; Kingsolver & Pfennig, 2004). Second, given the presumed importance of mate searching and the absence of male resource defense, we predict that sexual selection on males will be weak or favor smaller body size (Moya-Laraño et al., 2002; Blanckenhorn et al., 2007). Third, we anticipate that these forces will result in female-biased SSD (Fairbairn, 1997; Shine, 1988). Finally, we predict that patterns of assortative mating will reflect the direction of selection on male size: positive assortative mating if larger males are more successful, and negative assortative mating if smaller males are favored (Crespi, 1989; Jiang et al., 2013).
+
+#Methods
+
+### Study species
+I studied a population of an undescribed species of *Lyperobates* weevil (hereafter Lyperobates sp. A) collected on Maud Island/Te Hoiere, New Zealand. This taxon is currently under formal description, but can be reliably distinguished from described congeners based on consistent differences in body size, coloration, and elytral morphology (C.D. Kelly, personal observation.). All individuals used in this study conformed to this diagnostic phenotype and are treated as a single, cohesive lineage.
+
+Adult weevils were collected between 30 April and 4 May 2009 on Maud Island/Te Hoiere, New Zealand. Individuals were located opportunistically at night by searching the ground and low vegetation (≤ 2 m height) along a 20 m section of track bordering forest habitat. Sampling commenced approximately 1 hour after sunset (~18:30 h) and continued for two hours. Weevils were found almost exclusively on the leaves of kawakawa (*Piper excelsum*). Each observed male–female pair (N = 25), along with singleton males (N = 77) and females (N = 52), was collected and placed individually into 50 mL Falcon tubes, assigned a unique identification code, and transported to a field laboratory on Maud Island. Specimens were subsequently euthanized by freezing. All individuals were digitally photographed alongside a ruler for scale. Females were dissected to quantify fecundity by counting the number of eggs present in the reproductive tract. Morphological measurements were obtained from digital images using Fiji (Schindelin et al., 2012), including body length (from the anterior edge of the thorax to the posterior edge of the abdomen) and hind leg length (third pair; from the proximal end of the femur to the distal end of the tibia), measured to the nearest 0.01 mm.
+
+### Statistical Analyses
+All analyses were conducted in R (R Core Team, 2025). Morphological traits were measured as total body length and total leg length. Sex differences in these traits were first assessed using linear models with sex as a fixed effect. Additionally, we performed a multivariate analysis of variance (MANOVA) to test for overall sexual dimorphism across traits.
+
+To quantify the strength and form of selection on total body length and total hind leg length, we estimated standardized selection differentials and gradients following Lande and Arnold (1983) using the gsg R package (Morrissey & Sakrejda, 2013). Both traits were standardized to mean zero and unit variance prior to analysis. Directional selection differentials (S) were calculated as the covariance between each trait and relative fitness (Lande & Arnold, 1983). Selection gradients were used to estimate direct selection on traits: linear gradients (β) describe directional selection, quadratic gradients (γ) describe nonlinear (stabilizing or disruptive) selection, and correlational gradients (γᵢⱼ) describe selection on trait combinations (Phillips & Arnold, 1989). Fitness was modeled as a function of total body length and total hind leg length using spline-based generalized additive models (Wood, 2017), which allow flexible estimation of fitness surfaces without assuming a specific functional form and accommodate non-normal fitness distributions. Male mating success was treated as a binomial response (mated = 1, unmated = 0). Selection gradients (β, γ, γᵢⱼ) were estimated separately for each sex. Statistical significance was assessed using permutation tests implemented in gsg (Morrissey & Sakrejda, 2013), where trait–fitness associations were randomized to generate null distributions.
+
+Female fecundity selection was analyzed using a negative binomial generalized linear model (GLM) to account for overdispersion in egg counts (Venables & Ripley, 2002). Egg number was modeled as a function of log-transformed body size.
+
+Assortative mating was evaluated by testing for a relationship between male and female body size within mating pairs using linear regression on standardized traits (Crespi, 1989; Jiang et al., 2013). To assess whether the observed slope differed from random expectations, we conducted a permutation test in which pairings were randomized and slopes recalculated across iterations.
+
+#Results
+
+### Sexual Size Dimorphism (Prediction 3)
+Consistent with our third prediction, females were significantly larger than males in both total body length and total hind leg length (Table 1; Fig. 1), demonstrating pronounced female-biased SSD, a pattern commonly observed across insect taxa (Fairbairn et al., 2007; Blanckenhorn, 2000). Mean body length was 9.95 ± 0.07 mm in females and 8.94 ± 0.04 mm in males (β = −1.02 ± 0.08 SE, t = −13.5, P < 2 × 10⁻¹⁶; R² = 0.51). Females also exhibited longer legs (7.05 ± 0.04 mm vs. 6.66 ± 0.03 mm; P = 2.9 × 10⁻¹¹). A MANOVA confirmed strong overall dimorphism.
+
+#### Fecundity Selection on Females (Prediction 1)
+In support of our first prediction, female fecundity increased significantly with body size (Fig. 3), consistent with the widely reported positive relationship between body size and egg production in insects (Honěk, 1993; Kingsolver & Pfennig, 2004). Egg number was positively related to log-transformed body length (β = 4.50 ± 1.33, z = 3.39, P = 0.0007), indicating strong fecundity selection favoring larger females.
+
+### Sexual Selection on Males (Prediction 2)
+Contrary to our second prediction, we found no evidence that sexual selection favors smaller males. Instead, male body length was under significant positive directional selection (β = 1.000 ± 0.266, P = 0.002), indicating that larger males achieved higher mating success—a result inconsistent with predictions of scramble-competition theory (Blanckenhorn et al., 2007; Moya-Laraño et al., 2002).Selection was multivariate in both sexes (Phillips & Arnold, 1989). Body length experienced positive selection, while hind leg length was under negative selection. In males, we detected significant negative correlational selection between traits (γ = −0.565 ± 0.351, P = 0.004), indicating that males with larger bodies and relatively shorter legs had the highest fitness. No correlational selection was detected in females.
+
+#### Assortative Mating (Prediction 4)
+There was no evidence of assortative mating. The relationship between male and female body size within mating pairs was weak and non-significant (β = −0.23 ± 0.20, P = 0.268), and did not differ from random expectations (P = 0.437; Crespi, 1989). Thus, mating appeared random with respect to body size.
+
+# Discussion
+
+Although *Lyperobates* sp. A remains formally undescribed, multiple lines of evidence indicate that it represents a distinct and cohesive taxonomic entity. All individuals examined shared consistent morphological characteristics, and only a single morphotype was encountered at the study site. We therefore consider it appropriate to treat this taxon as a single species for the purposes of analyzing patterns of selection and sexual size dimorphism. A formal taxonomic description is currently in preparation. My study provides a comprehensive analysis of sexual size dimorphism (SSD) and its underlying selective mechanisms in a previously undescribed species of Lyperobates weevil. By integrating estimates of fecundity selection, sexual selection, and mating patterns (Lande & Arnold, 1983; Fairbairn, 1997), our results offer clear support for the hypothesis that female-biased SSD arises from the combined effects of strong selection for increased female body size and contrasting patterns of selection on male morphology.
+
+### Female-Biased SSD and Fecundity Selection
+Consistent with our predictions, females were significantly larger than males in both total body length and total hind leg length, demonstrating pronounced female-biased SSD. This pattern aligns with a substantial body of work in insects showing that fecundity selection commonly favors increased female size (Honěk, 1993; Shine, 1988; Fairbairn et al., 2007). Indeed, we found strong evidence that reproductive output increased with female body length, indicating that larger females carry more eggs and therefore likely achieve higher fitness (Kingsolver & Pfennig, 2004).Importantly, our results suggest that fecundity selection is not merely present, but sufficiently strong to drive substantial divergence in body size between the sexes. This supports the view that female-biased SSD can arise even in the absence of strong directional selection on males, provided that fecundity selection is pronounced (Fairbairn, 1997; Blanckenhorn, 2000).
+
+### Sexual Selection on Males: No Evidence for Selection Favoring Small Size
+Contrary to our initial prediction, we did not find evidence that sexual selection favors smaller males. Instead, directional selection gradients indicated positive selection on male body length, suggesting that larger males achieved higher mating success. This finding is inconsistent with a simple scramble-competition model, which would predict that smaller, more agile males are favored (Andersson, 1994; Blanckenhorn et al., 2007; Moya-Laraño et al., 2002).However, the absence of assortative mating by body size provides important context (Jiang et al., 2013). If larger males were consistently superior in securing mates, we might expect positive size-assortative mating (Crespi, 1989). Instead, mating appeared random with respect to body size, indicating that any advantage of larger males may be relatively weak or context-dependent.One possibility is that larger male size confers advantages unrelated to direct competition or mate monopolization—for example, increased endurance, improved mate searching over longer timescales (Moya-Laraño et al., 2002), or enhanced ability to resist displacement during brief mating interactions (Emlen & Oring, 1977). Alternatively, selection on male size may be influenced more by ecological factors than strictly by mating dynamics (Blanckenhorn, 2000).
+
+### Multivariate and Correlational Selection
+A key insight from this study is that selection on morphology is multivariate and cannot be fully understood by examining traits in isolation (Lande & Arnold, 1983; Phillips & Arnold, 1989). In both sexes, we detected opposing directional selection on body length and leg length—positive selection on body size but negative selection on leg length. This pattern suggests a functional trade-off, where increased overall size is advantageous, but disproportionately long legs may be costly (Kingsolver & Pfennig, 2004).In males, we further detected significant negative correlational selection between body length and leg length, indicating that the fitness consequences of one trait depend on the value of the other (Phillips & Arnold, 1989). Specifically, males with larger bodies and relatively shorter legs achieved higher mating success. This result underscores the importance of trait integration (Lande & Arnold, 1983) and suggests that selection favors particular morphological combinations rather than merely maximizing individual traits. In contrast, the absence of correlational selection in females suggests that fecundity selection acts more directly on body size, with fewer constraints imposed by trait interactions.
+
+### Absence of Assortative Mating
+Despite clear selection on body size—particularly in females—we found no evidence of assortative mating. This result suggests that mating patterns do not reinforce size-based selection in this species (Jiang et al., 2013), in contrast to patterns reported in some other arthropod taxa (Crespi, 1989; Foellmer & Fairbairn, 2005). Instead, pair formation appears effectively random concerning body size.This lack of assortative mating has two important implications. First, it suggests that male mating success is not strongly determined by matching with particular female sizes, weakening the link between male size and access to high-fecundity females (Andersson, 1994). Second, it indicates that SSD in this species is unlikely to be driven or maintained by size-based mating preferences or constraints (Fairbairn, 1997; Jiang et al., 2013).
+
+### Synthesis and Implications
+Taken together, our results indicate that female-biased SSD in this Lyperobates weevil is primarily driven by strong fecundity selection favoring larger females (Honěk, 1993; Shine, 1988), rather than by selection for reduced male size. Although males experience selection on morphology, this selection does not oppose the evolution of larger size and instead operates in a more complex, multivariate manner (Phillips & Arnold, 1989).These findings contribute to a growing body of evidence that the evolution of SSD depends on the interaction between fecundity selection and the specific form of sexual selection acting on males (Fairbairn, 1997; Blanckenhorn, 2000; Fairbairn et al., 2007). In particular, they highlight that female-biased SSD does not require selection for small males; it can emerge simply when selection for large females is strong and not counterbalanced by equally strong selection for large males (Ghiselin, 1974; Fairbairn, 1997).More broadly, this study underscores the importance of considering multivariate selection and trait integration when investigating the evolution of morphological dimorphism (Lande & Arnold, 1983; Phillips & Arnold, 1989). By examining both selection gradients and mating patterns, we provide a more nuanced understanding of how ecological and reproductive processes jointly shape SSD in natural populations (Fairbairn et al., 2007; Jiang et al., 2013).
+
+### Limitations and Future Directions
+Several limitations should be acknowledged. First, male mating success was measured as a binary outcome, which may obscure finer-scale variation in reproductive success (Andersson, 1994). Second, our sampling represents a relatively short temporal window and may not capture temporal variation in selection (Kingsolver et al., 2001). Third, behavioral observations of mate searching and competition were limited, constraining our ability to directly link morphology to mating tactics (Emlen & Oring, 1977).Future work should incorporate direct behavioral observations, repeated sampling across seasons (Kingsolver et al., 2001), and potentially experimental manipulations of trait variation to better isolate causal mechanisms. Additionally, comparative studies across related weevil species with differing mating systems (Toju & Sota, 2006) would help clarify the generality of the patterns observed here.
+
+### Conclusion
+This study demonstrates that female-biased SSD in a flightless, nocturnal weevil is driven by strong fecundity selection on females (Honěk, 1993; Kingsolver & Pfennig, 2004), coupled with complex but non-opposing selection on males (Lande & Arnold, 1983). The absence of assortative mating (Jiang et al., 2013) and the presence of multivariate selection (Phillips & Arnold, 1989) emphasize that the evolution of SSD cannot be understood through single-trait or single-sex perspectives alone. Instead, it reflects the combined and interacting effects of multiple selective forces acting across sexes and traits (Fairbairn et al., 2007).
+
+
+::: landscape
+```{r}
+#| echo: false
+#| results: asis
+#| warning: FALSE
+#| label: tbl-one
+#| tbl-cap: "Selection differentials (S, C) and standardized linear (β) and quadratic (γ) selection gradients for body length and leg length in female and male *Lyperobates* spp. weevils. Estimates are presented as mean ± SE. Differentials quantify total selection acting on traits, whereas gradients estimate direct selection after accounting for trait correlations. Linear gradients (β) describe directional selection, and quadratic gradients (γ) capture nonlinear selection (stabilizing or disruptive). P-values are shown for each estimate, and statistically significant effects (P < 0.05) are indicated in bold."
+
+ft
+```
+:::
+
+::: {#fig-one fig-cap="xxx"}
+![](figure_1.jpg)
+
+\newpage
+
+::: {#fig-two fig-cap="Fitness landscapes describing the relationship between morphology and mating success in males (a–b) and females (c–d). Panels show predicted mating success from generalized additive models as a function of body length (a, c) and hind leg length (b, d), with the alternate trait held constant. Solid lines represent model predictions and dashed lines indicate 95% confidence intervals estimated via parametric bootstrapping. Males exhibited positive directional selection on body length and negative directional selection on hind leg length, whereas females showed weaker positive selection on body length and negative selection on hind leg length. These patterns are consistent with estimates of linear selection gradients (β) reported in Table X."}
+![](figure_2.png)
+:::

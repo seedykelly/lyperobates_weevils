@@ -363,6 +363,10 @@ total.estimates.2
 female.fecundity <- glm.nb(eggs ~ log(total_body), data=females)
 summary(female.fecundity) # strong fecundity selection
 
+females %>%
+  filter(!is.na(eggs))
+
+
 newdat <- data.frame(
   total_body = seq(min(females$total_body),
                  max(females$total_body),
