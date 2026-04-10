@@ -21,13 +21,10 @@ library(stringr)
 #### read in data file ####
 morph_data <- read.csv(file="data/raw/weevils.csv", header=TRUE, sep=",", dec=".") %>%
   as_tibble() %>%
-  print(n=200)
-
-morph_data <- morph_data %>%
   mutate(fem=rowMeans(dplyr::select(., l_fem, r_fem), na.rm = TRUE)) %>%
   mutate(tib=rowMeans(dplyr::select(., l_tib, r_tib), na.rm = TRUE)) %>%
   mutate(total_body=tot_abdo+thorax) %>%
-  mutate(total_leg=fem+tib)
+  mutate(total_leg=fem+tib) 
 
 # =============================
 # sexual size dimorphism
@@ -64,46 +61,46 @@ summary(model_leg)
 manova_model <- manova(cbind(total_body, total_leg) ~ sex, data = morph_data)
 summary(manova_model)
 
-# plot_data <- morph_data %>%
-#   dplyr::select(sex, total_body, total_leg) %>%
-#   pivot_longer(
-#     cols = c(total_body, total_leg),
-#     names_to = "trait",
-#     values_to = "value"
-#   )
-# 
-# figure_1 <- ggplot(plot_data, aes(x = trait, y = value, fill = sex)) +
-#   geom_boxplot(
-#     position = position_dodge(width = 0.7),
-#     width = 0.6,
-#     outlier.shape = NA,
-#     color = "black"
-#   ) +
-#   geom_point(
-#     position = position_jitterdodge(
-#       jitter.width = 0.15,
-#       dodge.width = 0.7
-#     ),
-#     size = 1.6,
-#     alpha = 0.7,
-#     color = "black"
-#   ) +
-#   scale_fill_grey(
-#     start = 0.8,
-#     end = 0.4,
-#     labels = c("f" = "Females", "m" = "Males")
-#   ) +
-#   scale_x_discrete(
-#     labels = c(
-#       total_body = "Total body length",
-#       total_leg = "Total leg length"
-#     )
-#   ) +
-#   labs(
-#     x = "Trait",
-#     y = "Trait length (mm)",
-#     fill = "Sex"
-#   ) +
+plot_data <- morph_data %>%
+  dplyr::select(sex, total_body, total_leg) %>%
+  pivot_longer(
+    cols = c(total_body, total_leg),
+    names_to = "trait",
+    values_to = "value"
+  )
+
+figure_2 <- ggplot(plot_data, aes(x = trait, y = value, fill = sex)) +
+  geom_boxplot(
+    position = position_dodge(width = 0.7),
+    width = 0.6,
+    outlier.shape = NA,
+    color = "black"
+  ) +
+  geom_point(
+    position = position_jitterdodge(
+      jitter.width = 0.15,
+      dodge.width = 0.7
+    ),
+    size = 1.6,
+    alpha = 0.7,
+    color = "black"
+  ) +
+  scale_fill_grey(
+    start = 0.8,
+    end = 0.4,
+    labels = c("f" = "Females", "m" = "Males")
+  ) +
+  scale_x_discrete(
+    labels = c(
+      total_body = "Total body length",
+      total_leg = "Total leg length"
+    )
+  ) +
+  labs(
+    x = "Trait",
+    y = "Trait length (mm)",
+    fill = "Sex"
+  ) +
   theme_classic(base_size = 14) +
   theme(
     legend.position = c(0.98, 0.98),
@@ -114,7 +111,7 @@ summary(manova_model)
     axis.text = element_text(color = "black")
   )
 
-# ggsave("figure_1.png", width = 8, height = 8, dpi = 600)
+ggsave("figure_2.png", width = 8, height = 8, dpi = 600)
 
 summary_mating <- morph_data %>%
     group_by(sex, mated) %>%
@@ -129,8 +126,8 @@ summary_mating
 males <- morph_data %>%
   dplyr::filter(sex=="m")
 
-# male.gam<-gam(mated~s(total_body)+s(total_leg),family=binomial(link="logit"),method="GCV.Cp", data=males)
-# male.grad<-gam.gradients(mod = male.gam,phenotype=c("total_body","total_leg"),se.method="boot.para",n.boot=1000,standardize=TRUE)
+# male.gam<-gam(mated~s(total_body)+s(total_leg),family=binomial(link="logit"), method="GCV.Cp", data=males)
+# male.grad<-gam.gradients(mod = male.gam,phenotype=c("total_body","total_leg"), se.method="boot.para", n.boot=1000, standardize=TRUE)
 # male.estimates<-data.frame(male.grad$ests)
 
 ## need to double the (quadratic) gamma gradient and SEs
@@ -151,15 +148,25 @@ m.body <- readRDS("data/processed/m.body.rds")
 # saveRDS(m.leg, file = "data/processed/m.leg.rds")
 m.leg <- readRDS("data/processed/m.leg.rds")
 
-dev.off()
-par(xpd = NA, # switch off clipping, necessary to always see axis labels
-    bg = "transparent", # switch off background to avoid obscuring adjacent plots
-    oma = c(2, 2, 0, 0), # move plot to the right and up
-    mgp = c(2, 1, 0) # move axis labels closer to axis
-) 
-vis.gam(male.gam,view=c("total_body","total_leg"),color="heat",plot.type = "persp",  type="response",theta=155,
-        xlab="\nBody length (mm)", ylab="\nLeg length. (mm)",zlab="\nFitness")
-male.proj<-recordPlot()
+# png("figure_4.png",
+#     width = 2000, height = 2000, res = 300)
+# 
+# par(xpd = NA,
+#     bg = "transparent",
+#     oma = c(2, 2, 0, 0),
+#     mgp = c(2, 1, 0))
+# 
+# vis.gam(male.gam,
+#         view = c("total_body", "total_leg"),
+#         color = "bw",
+#         plot.type = "persp",
+#         type = "response",
+#         theta = 155,
+#         xlab = "\nBody length (mm)",
+#         ylab = "\nLeg length (mm)",
+#         zlab = "\nFitness")
+# 
+# dev.off()
 
 # female selection analysis
 females <- morph_data %>%
@@ -206,61 +213,61 @@ f.body.fitness <- readRDS("data/processed/f.body.fitness.rds")
 # saveRDS(f.leg.fitness, file = "data/processed/f.leg.fitness.rds")
 f.leg.fitness <- readRDS("data/processed/f.leg.fitness.rds")
 
-png("fitness_landscapes.png", width = 2400, height = 2400, res = 400, type = "cairo")
-
-par(mfrow = c(2,2),
-    mar = c(5,5,3,1),
-    oma = c(0,0,2,0))
-
-### Helper function to avoid repetition
-plot_fitness <- function(obj, xlab, panel_label) {
-  
-  x <- obj$points[,1]
-  y <- obj$Wbar
-  lower <- obj$WbarPI[1,]
-  upper <- obj$WbarPI[2,]
-  
-  # Empty plot (sets axes)
-  plot(x, y, type="n",
-       ylim=c(0,0.8),
-       xlab=xlab,
-       ylab="Mating success",
-       cex.lab=1.6,
-       cex.axis=1.2,
-       bty = "l")
-  
-  # Shaded confidence interval
-  polygon(c(x, rev(x)),
-          c(upper, rev(lower)),
-          col=rgb(0,0,0,0.15),
-          border=NA)
-  
-  # Main line
-  lines(x, y, lwd=2.5)
-  
-  # CI lines
-  lines(x, lower, lty=2, lwd=1.2)
-  lines(x, upper, lty=2, lwd=1.2)
-  
-  # Panel label (top-left inside plot)
-  usr <- par("usr")
-  
-  text(x = usr[1] - 0.34 * diff(usr[1:2]),  # move left of y-axis label
-       y = usr[4] + 0.19 * diff(usr[3:4]),  # move ABOVE plot (and label)
-       labels = panel_label,
-       xpd = NA,
-       adj = c(0, 1),
-       cex = 1.4,
-       font = 2)
-}
-
-### Panels
-plot_fitness(m.body.fitness, "Body length (mm)", "(a)")
-plot_fitness(m.leg.fitness,  "Hind leg length (mm)", "(b)")
-plot_fitness(f.body.fitness, "Body length (mm)", "(c)")
-plot_fitness(f.leg.fitness,  "Hind leg length (mm)", "(d)")
-
-dev.off()
+# png("figure_1.png", width = 2400, height = 2400, res = 400, type = "cairo")
+# 
+# par(mfrow = c(2,2),
+#     mar = c(5,5,3,1),
+#     oma = c(0,0,2,0))
+# 
+# ### Helper function to avoid repetition
+# plot_fitness <- function(obj, xlab, panel_label) {
+#   
+#   x <- obj$points[,1]
+#   y <- obj$Wbar
+#   lower <- obj$WbarPI[1,]
+#   upper <- obj$WbarPI[2,]
+#   
+#   # Empty plot (sets axes)
+#   plot(x, y, type="n",
+#        ylim=c(0,0.8),
+#        xlab=xlab,
+#        ylab="Mating success",
+#        cex.lab=1.6,
+#        cex.axis=1.2,
+#        bty = "l")
+#   
+#   # Shaded confidence interval
+#   polygon(c(x, rev(x)),
+#           c(upper, rev(lower)),
+#           col=rgb(0,0,0,0.15),
+#           border=NA)
+#   
+#   # Main line
+#   lines(x, y, lwd=2.5)
+#   
+#   # CI lines
+#   lines(x, lower, lty=2, lwd=1.2)
+#   lines(x, upper, lty=2, lwd=1.2)
+#   
+#   # Panel label (top-left inside plot)
+#   usr <- par("usr")
+#   
+#   text(x = usr[1] - 0.34 * diff(usr[1:2]),  # move left of y-axis label
+#        y = usr[4] + 0.19 * diff(usr[3:4]),  # move ABOVE plot (and label)
+#        labels = panel_label,
+#        xpd = NA,
+#        adj = c(0, 1),
+#        cex = 1.4,
+#        font = 2)
+# }
+# 
+# ### Panels
+# plot_fitness(m.body.fitness, "Body length (mm)", "(a)")
+# plot_fitness(m.leg.fitness,  "Hind leg length (mm)", "(b)")
+# plot_fitness(f.body.fitness, "Body length (mm)", "(c)")
+# plot_fitness(f.leg.fitness,  "Hind leg length (mm)", "(d)")
+# 
+# dev.off()
 
 # ===========================
 # selection table
@@ -637,6 +644,8 @@ null_slopes <- replicate(10000, {
 
 p_val <- mean(abs(null_slopes) >= abs(obs_slope)) # no assortative mating
 
+## ---- end
+
 # =========================
 # male mate choice
 # =========================
@@ -782,4 +791,3 @@ summary(model_sel)
 
 
 
-## ---- end
