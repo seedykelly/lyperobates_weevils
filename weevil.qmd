@@ -112,13 +112,10 @@ These findings highlight the need to move beyond simplified expectations of mati
 
 Data are available through the OSF repository at <https://doi.org/10.17605/OSF.IO/7FP9J.>
 
-# Author contributions
-
-AN designed the study, collected the data, and edited manuscript drafts, RS conducted a pilot study, and CDK designed the study, analyzed the data and wrote the manuscript.
 
 # Funding
 
-The study was funded by the Canada Research Chairs program and Natural Sciences and Engineering Research Council of Canada (NSERC) Discovery Grants.
+This research was supported by Natural Sciences and Engineering Research Council of Canada (NSERC) Discovery Grant.
 
 # Conflict of Interest
 
@@ -126,7 +123,7 @@ We declare no conflict of interest.
 
 # Acknowledgements
 
-I thank Steve Ward of the New Zealand Department of Conservation for logistical support while this work was conducted on Maud Island.
+I thank Steve Ward of the New Zealand Department of Conservation for logistical support while this work was conducted on Maud Island. I also thank Samuel Brown (Plant and Food),  Neil Birrell, and Rich Leschen (Landcare Research) of New Zealand for help taxonomically identifying my study species.
 
 \newpage
 
