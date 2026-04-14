@@ -54,21 +54,21 @@ Differences between males and females can therefore reflect sex-specific selecti
 
 When sexual selection favours increased male size—such as in systems involving male–male contest competition—male-biased SSD may evolve or female-biased SSD may be reduced [@andersson1994; @emlen1977].
 Conversely, female-biased SSD is expected when sexual selection on males is weak, absent, or favours smaller, more mobile males [@ghiselin1974; @fairbairn2007].
-Scramble-competitive mating systems are often invoked as a context in which smaller males are favoured because reproductive success depends on efficiently locating and securing mates rather than engaging in direct contests [@andersson1994; @moya-larano2002].
+Scramble-competitive mating systems are often invoked as contexts in which smaller males are favoured because reproductive success depends on efficiently locating and securing mates rather than on direct contests [@andersson1994; @moya-larano2002].
 Empirical support for this “mobility hypothesis” comes from systems in which smaller males, or males possessing morphology that enhances locomotor performance, achieve higher mating success, including in Japanese beetles (*Popilla japonica*), where smaller males with relatively larger wings are more successful [@kelly2020] in the Cook Strait giant weta (*Deinacrida rugosa*) where males with smaller bodies and longer legs have greater mating success [@kelly2008a; @kelly2023c].
 However, this expectation is not universal.
-Comparative evidence shows that scramble competition encompasses diverse selective regimes, and that larger males frequently achieve greater mating success despite the presumed importance of mobility [@herberstein2017].
+Comparative evidence shows that scramble competition encompasses diverse selective regimes and that larger males frequently achieve greater mating success despite the presumed importance of mobility [@herberstein2017].
 This suggests that traits such as endurance, mate detection, or persistence can outweigh any locomotor advantages of reduced body size.
 Thus, predicting the direction of sexual selection on male size in scramble systems requires empirical evaluation rather than reliance on general assumptions.
 
 Patterns of assortative mating can provide insight into how mating interactions are structured with respect to morphology, even in the absence of direct measures of reproductive success.
 When mating is positively assortative, individuals with similar trait values pair more frequently than expected by chance, which may arise through size-based mate choice, spatial or temporal clustering of similar-sized individuals, or mechanical compatibility [@crespi1989; @jiang2013].
-In contrast, negative assortative mating may occur when dissimilar trait combinations enhance mating success, for example if size differences facilitate mounting or reflect complementary functional roles during copulation.
+In contrast, negative assortative mating may occur when dissimilar trait combinations enhance mating success, for example, if size differences facilitate mounting or reflect complementary functional roles during copulation.
 In scramble-competitive systems, mating is typically driven by encounter rates rather than active mate choice, and therefore assortative mating is often expected to be weak or absent.
-However, non-random pairing can still arise if body size influences encounter probabilities, mounting success, or the ability of males to maintain contact with females during prolonged copulation [@kelly2020].
+However, non-random pairing can still arise if body size influences encounter probabilities, mounting success, or males' ability to maintain contact with females during prolonged copulation [@kelly2020].
 Thus, examining assortative mating provides a means of assessing whether pair formation is structured by morphology or occurs largely at random.
 
-Weevils (Curculionoidea) demonstrate significant ecological and mating system diversity among approximately 62,000 species [@haran2023], with around 1,500 species endemic to New Zealand [@may1993; see also @brown2017], making them valuable for investigating the role of sexual selection in the evolution of SSD.
+Weevils (Curculionoidea) exhibit significant ecological and mating-system diversity across approximately 62,000 species [@haran2023], with around 1,500 species endemic to New Zealand [@may1993; see also @brown2017], making them valuable for investigating the role of sexual selection in the evolution of SSD.
 Within this context, *Lyperobates* weevils, a genus of flightless, ground-dwelling beetles specific to New Zealand, are typically found in alpine and subalpine habitats (@fig-one).
 These nocturnal insects occupy structurally complex environments where individuals emerge at night to forage and locate mates.
 Notably, males do not appear to defend mating-related resources, indicating a scramble-competitive mating system [@andersson1994; @herberstein2017; @thornhillEvolutionInsectMating2013] in which mate encounter rates and search efficiency are crucial.
@@ -86,11 +86,12 @@ Finally, I predict that mating will be random with respect to body size (i.e., n
 ### Study species
 
 I studied a population of an undescribed species of *Lyperobates* weevil (hereafter *Lyperobates* sp. A) collected on Maud Island/Te Hoiere, New Zealand.
-This taxon is currently under formal description, but can be reliably distinguished from described congeners based on consistent differences in body size, coloration, and elytral morphology (C.D. Kelly, personal observation.).
+This taxon is currently under formal description, but can be reliably distinguished from described congeners based on consistent differences in body size, colouration, and elytral morphology (C.D. Kelly, personal observation.).
 All individuals used in this study conformed to this diagnostic phenotype and are treated as a single, cohesive lineage.
 
 Adult weevils were collected on 11 nights between 20 April and 5 May 2007 on Maud Island/Te Hoiere, New Zealand.
-Individuals were located opportunistically at night by searching the ground and low vegetation (≤ 2 m height) along a 20 m section of track bordering forest habitat.Sampling commenced approximately 1 hour after sunset (\~18:30 h) and continued for two hours.
+Individuals were opportunistically located at night by searching the ground and low vegetation (≤ 2 m height) along a 20 m section of track bordering forest habitat.
+Sampling commenced approximately 1 hour after sunset (\~18:30 h) and continued for two hours.
 Weevils were found almost exclusively on the leaves of kawakawa (*Piper excelsum*).
 Each observed male–female pair (N = 25), along with singleton males (N = 75) and females (N = 52), was collected and placed individually into 50 mL Falcon tubes, assigned a unique identification code, and transported to a field laboratory on Maud Island.
 Specimens were subsequently euthanized by freezing.
@@ -122,40 +123,40 @@ I evaluated assortative mating by testing for a relationship between male and fe
 
 # Results
 
-#### Fecundity selection on females
+### Fecundity selection on females
 
 In support of my first prediction, female fecundity increased significantly with body size (@fig-two), consistent with the widely reported positive relationship between body size and egg production in insects [@honek1993; @kingsolver2004].
 Egg number was positively related to log-transformed body length ($\beta$ = `r myround(summary(female.fecundity)$coefficients[2,1],2)` ± `r myround(summary(female.fecundity)$coefficients[2,2],2)`, z = `r myround(summary(female.fecundity)$coefficients[2,3],2)`, `r pvalue(summary(female.fecundity)$coefficients[2,4],accuracy = 0.001, add_p=TRUE)`), indicating strong fecundity selection favouring larger females.
 
-#### Sexual selection on males
+### Sexual selection on males
 
 Contrary to my second prediction, I found no evidence that sexual selection favours smaller males (@tbl-one).
-Instead, male body length was under strong positive directional selection ($\beta$~i~ = `r myround(male.estimates[[1,1]],2)`  ± `r myround(male.estimates[[1,2]],2)`, `r pvalue(male.estimates[[1,3]],accuracy = 0.001, add_p=TRUE)`), indicating that larger males achieved higher mating success (@fig-three a).
+Instead, male body length was under strong positive directional selection ($\beta$~i~ = `r myround(male.estimates[[1,1]],2)` ± `r myround(male.estimates[[1,2]],2)`, `r pvalue(male.estimates[[1,3]],accuracy = 0.001, add_p=TRUE)`), indicating that larger males achieved higher mating success (@fig-three a).
 This pattern is inconsistent with predictions of scramble-competition theory [@herberstein2017; @moya-larano2002; @kelly2008a].
 
 Selection was multivariate in both sexes [@phillips1989], indicating that fitness depended on combinations of traits rather than traits in isolation.
-In males, body length experienced positive directional selection, whereas hind leg length was under significant negative directional selection ($\beta$~j~ = `r myround(male.estimates[[2,1]],2)`  ± `r myround(male.estimates[[2,2]],2)`, `r pvalue(male.estimates[[2,3]],accuracy = 0.001, add_p=TRUE)`; @fig-three b), indicating that males with relatively shorter legs had higher mating success.
+In males, body length experienced positive directional selection, whereas hind leg length was under significant negative directional selection ($\beta$~j~ = `r myround(male.estimates[[2,1]],2)` ± `r myround(male.estimates[[2,2]],2)`, `r pvalue(male.estimates[[2,3]],accuracy = 0.001, add_p=TRUE)`; @fig-three b), indicating that males with relatively shorter legs had higher mating success.
 
 In addition to directional effects, both male traits exhibited significant nonlinear selection (@tbl-one).
-Body length showed positive quadratic selection ($\gamma$~ii~ = `r myround(male.estimates[[3,1]],2)`  ± `r myround(male.estimates[[3,2]],2)`, `r pvalue(male.estimates[[3,3]],accuracy = 0.001, add_p=TRUE)`; @fig-three b), and leg length also experienced positive quadratic selection ($\gamma$~jj~ = `r myround(male.estimates[[4,1]],2)`  ± `r myround(male.estimates[[4,2]],2)`, `r pvalue(male.estimates[[4,3]],accuracy = 0.001, add_p=TRUE)`; @fig-three b), indicating curvature in the fitness surface.
-Importantly, I also detected significant negative correlational selection between traits ($\beta$~i~ = `r myround(female.estimates[[1,1]],2)`  ± `r myround(female.estimates[[1,2]],2)`, `r pvalue(female.estimates[[1,3]],accuracy = 0.001, add_p=TRUE)`).
-The fitness surface (@fig-four) reveals that this interaction strongly shapes the adaptive landscape, such that mating success is highest for males with large bodies and relatively short legs.
+Body length showed positive quadratic selection ($\gamma$~ii~ = `r myround(male.estimates[[3,1]],2)` ± `r myround(male.estimates[[3,2]],2)`, `r pvalue(male.estimates[[3,3]],accuracy = 0.001, add_p=TRUE)`; @fig-three b), and leg length also experienced positive quadratic selection ($\gamma$~jj~ = `r myround(male.estimates[[4,1]],2)` ± `r myround(male.estimates[[4,2]],2)`, `r pvalue(male.estimates[[4,3]],accuracy = 0.001, add_p=TRUE)`; @fig-three b), indicating curvature in the fitness surface.
+Importantly, I also detected significant negative correlational selection between traits ($\gamma$~ij~ = `r myround(male.estimates[[5,1]],2)` ± `r myround(male.estimates[[5,2]],2)`, `r pvalue(female.estimates[[5,3]],accuracy = 0.001, add_p=TRUE)`).
+The fitness surface (@fig-four) reveals that this interaction strongly shapes the adaptive landscape, with mating success highest for males with large bodies and relatively short legs.
 This produces a ridge-like fitness surface, rather than independent optima for each trait.
 
-In females, directional selection was also evident: body length was under positive selection ($\beta$~i~ = `r myround(female.estimates[[1,1]],2)`  ± `r myround(female.estimates[[1,2]],2)`, `r pvalue(female.estimates[[1,3]],accuracy = 0.001, add_p=TRUE)`), while leg length was under strong negative selection ($\beta$~j~ = `r myround(female.estimates[[2,1]],2)`  ± `r myround(female.estimates[[2,2]],2)`, `r pvalue(female.estimates[[2,3]],accuracy = 0.001, add_p=TRUE)`; @fig-four).
-However, I detected no evidence for nonlinear (@tbl-one) or correlational selection in females ($\gamma$~jj~ = `r myround(female.estimates[[4,1]],2)`  ± `r myround(female.estimates[[4,2]],2)`, `r pvalue(female.estimates[[4,3]],accuracy = 0.001, add_p=TRUE)`).
+In females, directional selection was also evident: body length was under positive selection ($\beta$~i~ = `r myround(female.estimates[[1,1]],2)` ± `r myround(female.estimates[[1,2]],2)`, `r pvalue(female.estimates[[1,3]],accuracy = 0.001, add_p=TRUE)`), while leg length was under strong negative selection ($\beta$~j~ = `r myround(female.estimates[[2,1]],2)` ± `r myround(female.estimates[[2,2]],2)`, `r pvalue(female.estimates[[2,3]],accuracy = 0.001, add_p=TRUE)`; @fig-four).
+However, I detected no evidence for nonlinear (@tbl-one) or correlational selection in females ($\gamma$~ij~ = `r myround(female.estimates[[5,1]],2)` ± `r myround(female.estimates[[5,2]],2)`, `r pvalue(female.estimates[[5,3]],accuracy = 0.001, add_p=TRUE)`).
 
 ### Sexual size dimorphism
 
 Consistent with my third prediction, females were significantly larger than males in both total body length and total hind leg length (@fig-five), demonstrating pronounced female-biased sexual size dimorphism (SSD), a pattern widely observed across insects [@fairbairn2007; @blanckenhorn2000].
-Mean body length was `r summary_stats[[1,3]]` ± `r summary_stats[[1,4]]` mm (n = `r summary_stats[[1,2]]`) in females and `r summary_stats[[2,3]]` ± `r summary_stats[[2,4]]` mm (n = `r summary_stats[[2,2]]`) in males, indicating that females were approximately `r myround(((summary_stats[[1,3]]-summary_stats[[2,3]])/summary_stats[[2,3]])*100,1)`% larger than males (female:male ratio = `r myround((summary_stats[[1,3]]/summary_stats[[2,3]]),2)`).
-Linear modelling confirmed that males were, on average, 1.00 mm shorter than females ($\beta$ = `r myround(summary(model_body)$coefficients[2,1],2)` ± `r myround(summary(model_body)$coefficients[2,2],2)`, t = `r myround(summary(model_body)$coefficients[2,3],2)`, `r pvalue(summary(model_body)$coefficients[2,4],accuracy = 0.001, add_p=TRUE)`; R^2 = `r myround(summary(model_body)$r.squared,2)`.
+Mean body length was `r myround(summary_stats[[1,3]],2)` ± `r myround(summary_stats[[1,4]],2)` mm (n = `r summary_stats[[1,2]]`) in females and `r myround(summary_stats[[2,3]],2)` ± `r myround(summary_stats[[2,4]],2)` mm (n = `r summary_stats[[2,2]]`) in males, indicating that females were approximately `r myround(((summary_stats[[1,3]]-summary_stats[[2,3]])/summary_stats[[2,3]])*100,1)`% larger than males (female:male ratio = `r myround((summary_stats[[1,3]]/summary_stats[[2,3]]),2)`).
+Linear modelling confirmed that males were, on average, 1.00 mm shorter than females ($\beta$ = `r myround(summary(model_body)$coefficients[2,1],2)` ± `r myround(summary(model_body)$coefficients[2,2],2)`, t = `r myround(summary(model_body)$coefficients[2,3],2)`, `r pvalue(summary(model_body)$coefficients[2,4],accuracy = 0.001, add_p=TRUE)`; R^2^ = `r myround(summary(model_body)$r.squared,2)`.
 
-Hind leg length showed a similar pattern, with females exhibiting longer legs than males (`r summary_stats[[1,5]]` ± `r summary_stats[[1,6]]` mm vs. `r summary_stats[[2,5]]` ± `r summary_stats[[2,6]]` mm), corresponding to a `r myround(((summary_stats[[1,5]]-summary_stats[[2,5]])/summary_stats[[2,5]])*100,1)`% increase in females (ratio = `r myround((summary_stats[[1,5]]/summary_stats[[2,5]]),2)`).
-This difference was also statistically significant ($\beta$ = `r myround(summary(model_leg)$coefficients[2,1],2)` ± `r myround(summary(model_leg)$coefficients[2,2],2)`, t = `r myround(summary(model_leg)$coefficients[2,3],2)`, `r pvalue(summary(model_leg)$coefficients[2,4],accuracy = 0.001, add_p=TRUE)`; R^2 = `r myround(summary(model_leg)$r.squared,2)`).
+Hind leg length showed a similar pattern, with females exhibiting longer legs than males (`r myround(summary_stats[[1,5]],2)` ± `r myround(summary_stats[[1,6]],2)` mm vs. `r myround(summary_stats[[2,5]],2)` ± `r myround(summary_stats[[2,6]],2)` mm), corresponding to a `r myround(((summary_stats[[1,5]]-summary_stats[[2,5]])/summary_stats[[2,5]])*100,1)`% increase in females (ratio = `r myround((summary_stats[[1,5]]/summary_stats[[2,5]]),2)`).
+This difference was also statistically significant ($\beta$ = `r myround(summary(model_leg)$coefficients[2,1],2)` ± `r myround(summary(model_leg)$coefficients[2,2],2)`, t = `r myround(summary(model_leg)$coefficients[2,3],2)`, `r pvalue(summary(model_leg)$coefficients[2,4],accuracy = 0.001, add_p=TRUE)`; R^2^ = `r myround(summary(model_leg)$r.squared,2)`).
 A multivariate analysis confirmed strong overall sexual dimorphism across traits (MANOVA: Pillai’s trace = `r myround(summary(manova_model)$stats[1, "Pillai"],2)`, F~`r summary(manova_model)$stats[1, "num Df"]`,`r summary(manova_model)$stats[1, "den Df"]`~ = `r myround(summary(manova_model)$stats[1, "approx F"],2)`, `r pvalue(summary(manova_model)$stats[1, "Pr(>F)"],accuracy = 0.001, add_p=TRUE)`).
 
-#### Assortative mating
+### Assortative mating
 
 There was no evidence of assortative mating.
 The relationship between male and female body size within mating pairs was weak and non-significant ($\beta$ = `r myround(summary(assort)$coefficients[2,1],2)` ± `r myround(summary(assort)$coefficients[2,2],2)`, t = `r myround(summary(assort)$coefficients[2,3],2)`, `r pvalue(summary(assort)$coefficients[2,4],accuracy = 0.001, add_p=TRUE)`), and did not differ from random expectations (P = `r p_val[1]`).
@@ -177,8 +178,8 @@ More broadly, this pattern is consistent with models of sex-role evolution in wh
 
 Contrary to classic expectations for scramble-competitive mating systems, sexual selection favoured larger males rather than smaller, more mobile individuals [@andersson1994; @moya-larano2002; @fairbairn2007].
 Larger males achieved higher mating success, indicating strong positive directional selection on body length.
-Although scramble competition is often assumed to favour reduced size due to advantages in mobility, empirical and comparative evidence suggests that this expectation is not universal [@herberstein2017].
-For example, sexual selection favours smaller, more mobile males in some systems, such as Japanese beetles and giant weta [@kelly2020; @kelly2008a; @kelly2023c], whereas in others larger males achieve higher mating success despite the presumed importance of mobility.
+Although scramble competition is often assumed to favour reduced size due to advantages in mobility, empirical and comparative evidence suggest that this expectation is not universal [@herberstein2017].
+For example, sexual selection favours smaller, more mobile males in some systems, such as Japanese beetles and giant weta [@kelly2020; @kelly2008a; @kelly2023c], whereas in others, larger males achieve higher mating success despite the presumed importance of mobility.
 These findings indicate that the direction of sexual selection on male size is highly context-dependent and cannot be predicted solely from mating system classification.
 In this system, traits associated with encounter rate, persistence, or the ability to maintain contact with females may outweigh any locomotor advantages of smaller size.
 
@@ -188,7 +189,7 @@ This indicates that fitness is maximized by specific trait combinations rather t
 The resulting fitness surface is ridge-shaped, with highest mating success achieved by males combining large body size with relatively short legs.
 This finding refines a simple “bigger is better” interpretation of sexual selection.
 Although larger males generally have higher mating success, this advantage depends on their associated morphology.
-Such correlational selection implies functional integration between traits, likely reflecting performance trade-offs that influence mate-search efficiency, stability during mating, or endurance.
+Such correlational selection implies functional integration among traits, likely reflecting performance trade-offs that influence mate-search efficiency, mating stability, or endurance.
 More broadly, this result highlights that interpreting selection on individual traits in isolation can be misleading when fitness depends on trait combinations [@phillips1989].
 
 In contrast to males, females experienced directional selection on morphology but showed no evidence of nonlinear or correlational selection.
@@ -197,14 +198,14 @@ The absence of multivariate selection in females may reflect differences in how 
 
 I found no evidence of assortative mating with respect to body size, indicating that mating pairs form independently of size similarity or dissimilarity between males and females.
 This result is consistent with expectations for scramble-competitive systems, in which pair formation is largely driven by encounter processes rather than active mate choice [@crespi1989; @jiang2013].
-The absence of assortative mating suggests that, despite strong sexual selection on male morphology, body size does not structure which individuals mate with one another.
+The absence of assortative mating suggests that, despite strong sexual selection on male morphology, body size does not structure mate choice.
 In particular, males with phenotypes favoured by selection—those with relatively large bodies and shorter legs—do not preferentially pair with females of any particular size.
 This decoupling between selection on individual traits and the structure of mating pairs highlights that the processes determining mating success need not generate non-random pairing patterns [@mcdonald2016].
 
 My results demonstrate that female-biased SSD in this *Lyperobates* weevil arises from the combined effects of strong fecundity selection on females and multivariate sexual selection on males.
 While sexual selection favours increased male body size, this effect is contingent on trait combinations, emphasizing the importance of correlational selection in shaping male morphology.
 This pattern is consistent with broader comparative work showing that SSD often reflects the combined effects of fecundity selection on females and sexual selection on males, with the balance between these forces varying across taxa [@stillwell2010].
-At the same time, the absence of assortative mating indicates that mating structure does not reinforce or constrain these selective patterns, in contrast to systems where non-random mating can strengthen or weaken sexual selection [@kelly2023c; @mcdonald2016].
+At the same time, the absence of assortative mating indicates that mating structure neither reinforces nor constrains these selective patterns, in contrast to systems where non-random mating can strengthen or weaken sexual selection [@kelly2023c; @mcdonald2016].
 More broadly, these findings highlight that the evolution of SSD depends not only on the strength and direction of selection acting on individual traits, but also on how traits interact to influence performance and fitness.
 
 Several limitations of my study should be noted.
@@ -220,7 +221,7 @@ These results highlight the importance of adopting a multivariate perspective wh
 
 # Data availability
 
-Data are available through the OSF repository at <https://doi.org/10.17605/OSF.IO/7FP9J.>
+Data are available through the OSF repository at <https://osf.io/khqgs/overview?view_only=728733529d06410ab17086f648a49a38>[.](https://doi.org/10.17605/OSF.IO/7FP9J.){.uri}
 
 # Funding
 
