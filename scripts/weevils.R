@@ -69,49 +69,49 @@ plot_data <- morph_data %>%
     values_to = "value"
   )
 
-figure_2 <- ggplot(plot_data, aes(x = trait, y = value, fill = sex)) +
-  geom_boxplot(
-    position = position_dodge(width = 0.7),
-    width = 0.6,
-    outlier.shape = NA,
-    color = "black"
-  ) +
-  geom_point(
-    position = position_jitterdodge(
-      jitter.width = 0.15,
-      dodge.width = 0.7
-    ),
-    size = 1.6,
-    alpha = 0.7,
-    color = "black"
-  ) +
-  scale_fill_grey(
-    start = 0.8,
-    end = 0.4,
-    labels = c("f" = "Females", "m" = "Males")
-  ) +
-  scale_x_discrete(
-    labels = c(
-      total_body = "Total body length",
-      total_leg = "Total leg length"
-    )
-  ) +
-  labs(
-    x = "Trait",
-    y = "Trait length (mm)",
-    fill = "Sex"
-  ) +
-  theme_classic(base_size = 14) +
-  theme(
-    legend.position = c(0.98, 0.98),
-    legend.justification = c(1, 1),
-    legend.background = element_blank(),
-    legend.key = element_blank(),
-    axis.title = element_text(face = "bold"),
-    axis.text = element_text(color = "black")
-  )
-
-ggsave("figure_2.png", width = 8, height = 8, dpi = 600)
+# figure_5 <- ggplot(plot_data, aes(x = trait, y = value, fill = sex)) +
+#   geom_boxplot(
+#     position = position_dodge(width = 0.7),
+#     width = 0.6,
+#     outlier.shape = NA,
+#     color = "black"
+#   ) +
+#   geom_point(
+#     position = position_jitterdodge(
+#       jitter.width = 0.15,
+#       dodge.width = 0.7
+#     ),
+#     size = 1.6,
+#     alpha = 0.7,
+#     color = "black"
+#   ) +
+#   scale_fill_grey(
+#     start = 0.8,
+#     end = 0.4,
+#     labels = c("f" = "Females", "m" = "Males")
+#   ) +
+#   scale_x_discrete(
+#     labels = c(
+#       total_body = "Total body length",
+#       total_leg = "Total leg length"
+#     )
+#   ) +
+#   labs(
+#     x = "Trait",
+#     y = "Trait length (mm)",
+#     fill = "Sex"
+#   ) +
+#   theme_classic(base_size = 14) +
+#   theme(
+#     legend.position = c(0.98, 0.98),
+#     legend.justification = c(1, 1),
+#     legend.background = element_blank(),
+#     legend.key = element_blank(),
+#     axis.title = element_text(face = "bold"),
+#     axis.text = element_text(color = "black")
+#   )
+# 
+# ggsave("figure_5.png", width = 8, height = 8, dpi = 600)
 
 summary_mating <- morph_data %>%
     group_by(sex, mated) %>%
@@ -213,7 +213,7 @@ f.body.fitness <- readRDS("data/processed/f.body.fitness.rds")
 # saveRDS(f.leg.fitness, file = "data/processed/f.leg.fitness.rds")
 f.leg.fitness <- readRDS("data/processed/f.leg.fitness.rds")
 
-# png("figure_1.png", width = 2400, height = 2400, res = 400, type = "cairo")
+# png("figure_3.png", width = 2400, height = 2400, res = 400, type = "cairo")
 # 
 # par(mfrow = c(2,2),
 #     mar = c(5,5,3,1),
@@ -221,12 +221,12 @@ f.leg.fitness <- readRDS("data/processed/f.leg.fitness.rds")
 # 
 # ### Helper function to avoid repetition
 # plot_fitness <- function(obj, xlab, panel_label) {
-#   
+# 
 #   x <- obj$points[,1]
 #   y <- obj$Wbar
 #   lower <- obj$WbarPI[1,]
 #   upper <- obj$WbarPI[2,]
-#   
+# 
 #   # Empty plot (sets axes)
 #   plot(x, y, type="n",
 #        ylim=c(0,0.8),
@@ -235,23 +235,23 @@ f.leg.fitness <- readRDS("data/processed/f.leg.fitness.rds")
 #        cex.lab=1.6,
 #        cex.axis=1.2,
 #        bty = "l")
-#   
+# 
 #   # Shaded confidence interval
 #   polygon(c(x, rev(x)),
 #           c(upper, rev(lower)),
 #           col=rgb(0,0,0,0.15),
 #           border=NA)
-#   
+# 
 #   # Main line
 #   lines(x, y, lwd=2.5)
-#   
+# 
 #   # CI lines
 #   lines(x, lower, lty=2, lwd=1.2)
 #   lines(x, upper, lty=2, lwd=1.2)
-#   
+# 
 #   # Panel label (top-left inside plot)
 #   usr <- par("usr")
-#   
+# 
 #   text(x = usr[1] - 0.34 * diff(usr[1:2]),  # move left of y-axis label
 #        y = usr[4] + 0.19 * diff(usr[3:4]),  # move ABOVE plot (and label)
 #        labels = panel_label,
@@ -578,15 +578,15 @@ females_clean <- females |>
 female.fecundity <- glm.nb(eggs ~ log(total_body), data=females_clean)
 summary(female.fecundity) # strong fecundity selection
 
-# newdat <- data.frame(
-#   total_body = seq(min(females$total_body),
-#                  max(females$total_body),
-#                  length.out = 100)
-# )
-# 
-# pred <- predict(female.fecundity, newdata = newdat,
-#                 type = "link", se.fit = TRUE)
-# 
+newdat <- data.frame(
+  total_body = seq(min(females$total_body),
+                 max(females$total_body),
+                 length.out = 100)
+)
+
+pred <- predict(female.fecundity, newdata = newdat,
+                type = "link", se.fit = TRUE)
+
 # newdat$fit <- exp(pred$fit)
 # newdat$lwr <- exp(pred$fit - 1.96 * pred$se.fit)
 # newdat$upr <- exp(pred$fit + 1.96 * pred$se.fit)
@@ -617,7 +617,7 @@ summary(female.fecundity) # strong fecundity selection
 #     axis.text = element_text(color = "black")
 #   )
 # 
-# ggsave("figure_3.png", width = 8, height = 8, dpi = 600)
+# ggsave("figure_2.png", width = 8, height = 8, dpi = 600)
 
 
 # =========================
