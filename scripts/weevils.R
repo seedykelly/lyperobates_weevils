@@ -15,7 +15,8 @@ library(mgcv)
 library(MASS)
 library(tibble)
 library(stringr)
-
+library(broman)
+library(scales)
 # install.packages("~/Documents/Action/gsg_2.0.tar", repos = NULL, type = "source")
 
 #### read in data file ####
@@ -138,6 +139,8 @@ males <- morph_data %>%
 # saveRDS(male.estimates, file = "data/processed/male.estimates.rds")
 
 male.estimates <- readRDS("data/processed/male.estimates.rds")
+
+str(male.estimates)
 
 # male selection differentials
 # m.body <- moments.differentials(z=males$total_body, W=males$mated, n.boot=10000, standardized=TRUE)
@@ -577,6 +580,8 @@ females_clean <- females |>
 
 female.fecundity <- glm.nb(eggs ~ log(total_body), data=females_clean)
 summary(female.fecundity) # strong fecundity selection
+
+str(female.fecundity)
 
 newdat <- data.frame(
   total_body = seq(min(females$total_body),

@@ -69,7 +69,7 @@ However, non-random pairing can still arise if body size influences encounter pr
 Thus, examining assortative mating provides a means of assessing whether pair formation is structured by morphology or occurs largely at random.
 
 Weevils (Curculionoidea) demonstrate significant ecological and mating system diversity among approximately 62,000 species [@haran2023], with around 1,500 species endemic to New Zealand [@may1993; see also @brown2017], making them valuable for investigating the role of sexual selection in the evolution of SSD.
-Within this context, *Lyperobates* weevils, a genus of flightless, ground-dwelling beetles specific to New Zealand, are typically found in alpine and subalpine habitats.
+Within this context, *Lyperobates* weevils, a genus of flightless, ground-dwelling beetles specific to New Zealand, are typically found in alpine and subalpine habitats (@fig-one).
 These nocturnal insects occupy structurally complex environments where individuals emerge at night to forage and locate mates.
 Notably, males do not appear to defend mating-related resources, indicating a scramble-competitive mating system [@andersson1994; @herberstein2017; @thornhillEvolutionInsectMating2013] in which mate encounter rates and search efficiency are crucial.
 Once a male successfully locates and mounts a female, he may remain mounted for several hours, copulating intermittently throughout this duration.
@@ -124,41 +124,41 @@ I evaluated assortative mating by testing for a relationship between male and fe
 
 #### Fecundity selection on females
 
-In support of my first prediction, female fecundity increased significantly with body size (Fig. 1), consistent with the widely reported positive relationship between body size and egg production in insects [@honek1993; @kingsolver2004].
-Egg number was positively related to log-transformed body length (β = 4.50 ± 1.33, z = 3.39, P = 0.0007), indicating strong fecundity selection favouring larger females.
+In support of my first prediction, female fecundity increased significantly with body size (@fig-two), consistent with the widely reported positive relationship between body size and egg production in insects [@honek1993; @kingsolver2004].
+Egg number was positively related to log-transformed body length ($\beta$ = `r myround(summary(female.fecundity)$coefficients[2,1],2)` ± `r myround(summary(female.fecundity)$coefficients[2,2],2)`, z = `r myround(summary(female.fecundity)$coefficients[2,3],2)`, `r pvalue(summary(female.fecundity)$coefficients[2,4],accuracy = 0.001, add_p=TRUE)`), indicating strong fecundity selection favouring larger females.
 
 #### Sexual selection on males
 
-Contrary to my second prediction, I found no evidence that sexual selection favours smaller males.
-Instead, male body length was under strong positive directional selection (β = 0.968 ± 0.257, P \< 0.001), indicating that larger males achieved higher mating success (@fig-three a,c).
+Contrary to my second prediction, I found no evidence that sexual selection favours smaller males (@tbl-one).
+Instead, male body length was under strong positive directional selection ($\beta$~i~ = `r myround(male.estimates[[1,1]],2)`  ± `r myround(male.estimates[[1,2]],2)`, `r pvalue(male.estimates[[1,3]],accuracy = 0.001, add_p=TRUE)`), indicating that larger males achieved higher mating success (@fig-three a).
 This pattern is inconsistent with predictions of scramble-competition theory [@herberstein2017; @moya-larano2002; @kelly2008a].
 
 Selection was multivariate in both sexes [@phillips1989], indicating that fitness depended on combinations of traits rather than traits in isolation.
-In males, body length experienced positive directional selection, whereas hind leg length was under significant negative directional selection (β = −0.954 ± 0.259, P = 0.002), indicating that males with relatively shorter legs had higher mating success (Fig. 2b,d).
+In males, body length experienced positive directional selection, whereas hind leg length was under significant negative directional selection ($\beta$~j~ = `r myround(male.estimates[[2,1]],2)`  ± `r myround(male.estimates[[2,2]],2)`, `r pvalue(male.estimates[[2,3]],accuracy = 0.001, add_p=TRUE)`; @fig-three b), indicating that males with relatively shorter legs had higher mating success.
 
-In addition to directional effects, both male traits exhibited significant nonlinear selection.
-Body length showed positive quadratic selection (γ = 1.203 ± 0.751, P \< 0.001), and leg length also experienced positive quadratic selection (γ = 1.169 ± 0.758, P \< 0.001), indicating curvature in the fitness surface.
-Importantly, I also detected significant negative correlational selection between traits (γ = −0.593 ± 0.358, P = 0.002).
+In addition to directional effects, both male traits exhibited significant nonlinear selection (@tbl-one).
+Body length showed positive quadratic selection ($\gamma$~ii~ = `r myround(male.estimates[[3,1]],2)`  ± `r myround(male.estimates[[3,2]],2)`, `r pvalue(male.estimates[[3,3]],accuracy = 0.001, add_p=TRUE)`; @fig-three b), and leg length also experienced positive quadratic selection ($\gamma$~jj~ = `r myround(male.estimates[[4,1]],2)`  ± `r myround(male.estimates[[4,2]],2)`, `r pvalue(male.estimates[[4,3]],accuracy = 0.001, add_p=TRUE)`; @fig-three b), indicating curvature in the fitness surface.
+Importantly, I also detected significant negative correlational selection between traits ($\beta$~i~ = `r myround(female.estimates[[1,1]],2)`  ± `r myround(female.estimates[[1,2]],2)`, `r pvalue(female.estimates[[1,3]],accuracy = 0.001, add_p=TRUE)`).
 The fitness surface (@fig-four) reveals that this interaction strongly shapes the adaptive landscape, such that mating success is highest for males with large bodies and relatively short legs.
 This produces a ridge-like fitness surface, rather than independent optima for each trait.
 
-In females, directional selection was also evident: body length was under positive selection (β = 0.930 ± 0.394, P = 0.034), while leg length was under strong negative selection (β = −1.224 ± 0.338, P \< 0.001; @fig-three b,c).
-However, I detected no evidence for nonlinear or correlational selection in females (all P \> 0.09).
+In females, directional selection was also evident: body length was under positive selection ($\beta$~i~ = `r myround(female.estimates[[1,1]],2)`  ± `r myround(female.estimates[[1,2]],2)`, `r pvalue(female.estimates[[1,3]],accuracy = 0.001, add_p=TRUE)`), while leg length was under strong negative selection ($\beta$~j~ = `r myround(female.estimates[[2,1]],2)`  ± `r myround(female.estimates[[2,2]],2)`, `r pvalue(female.estimates[[2,3]],accuracy = 0.001, add_p=TRUE)`; @fig-four).
+However, I detected no evidence for nonlinear (@tbl-one) or correlational selection in females ($\gamma$~jj~ = `r myround(female.estimates[[4,1]],2)`  ± `r myround(female.estimates[[4,2]],2)`, `r pvalue(female.estimates[[4,3]],accuracy = 0.001, add_p=TRUE)`).
 
 ### Sexual size dimorphism
 
 Consistent with my third prediction, females were significantly larger than males in both total body length and total hind leg length (@fig-five), demonstrating pronounced female-biased sexual size dimorphism (SSD), a pattern widely observed across insects [@fairbairn2007; @blanckenhorn2000].
-Mean body length was 9.95 ± 0.07 mm in females and 8.95 ± 0.04 mm in males, indicating that females were approximately 11.2% larger than males (female:male ratio = 1.11).
-Linear modelling confirmed that males were, on average, 1.00 mm shorter than females (β = −1.00 ± 0.08 SE, t = −13.34, P \< 2 × 10⁻¹⁶; R² = 0.50).
+Mean body length was `r summary_stats[[1,3]]` ± `r summary_stats[[1,4]]` mm (n = `r summary_stats[[1,2]]`) in females and `r summary_stats[[2,3]]` ± `r summary_stats[[2,4]]` mm (n = `r summary_stats[[2,2]]`) in males, indicating that females were approximately `r myround(((summary_stats[[1,3]]-summary_stats[[2,3]])/summary_stats[[2,3]])*100,1)`% larger than males (female:male ratio = `r myround((summary_stats[[1,3]]/summary_stats[[2,3]]),2)`).
+Linear modelling confirmed that males were, on average, 1.00 mm shorter than females ($\beta$ = `r myround(summary(model_body)$coefficients[2,1],2)` ± `r myround(summary(model_body)$coefficients[2,2],2)`, t = `r myround(summary(model_body)$coefficients[2,3],2)`, `r pvalue(summary(model_body)$coefficients[2,4],accuracy = 0.001, add_p=TRUE)`; R^2 = `r myround(summary(model_body)$r.squared,2)`.
 
-Hind leg length showed a similar pattern, with females exhibiting longer legs than males (7.05 ± 0.04 mm vs. 6.68 ± 0.03 mm), corresponding to a 5.5% increase in females (ratio = 1.06).
-This difference was also statistically significant (β = −0.37 ± 0.05 SE, t = −6.95, P = 6.8 × 10⁻¹¹; R² = 0.22).
-A multivariate analysis confirmed strong overall sexual dimorphism across traits (MANOVA: Pillai’s trace = 0.57, F₂,₁₇₄ = 117.46, P \< 2.2 × 10⁻¹⁶).
+Hind leg length showed a similar pattern, with females exhibiting longer legs than males (`r summary_stats[[1,5]]` ± `r summary_stats[[1,6]]` mm vs. `r summary_stats[[2,5]]` ± `r summary_stats[[2,6]]` mm), corresponding to a `r myround(((summary_stats[[1,5]]-summary_stats[[2,5]])/summary_stats[[2,5]])*100,1)`% increase in females (ratio = `r myround((summary_stats[[1,5]]/summary_stats[[2,5]]),2)`).
+This difference was also statistically significant ($\beta$ = `r myround(summary(model_leg)$coefficients[2,1],2)` ± `r myround(summary(model_leg)$coefficients[2,2],2)`, t = `r myround(summary(model_leg)$coefficients[2,3],2)`, `r pvalue(summary(model_leg)$coefficients[2,4],accuracy = 0.001, add_p=TRUE)`; R^2 = `r myround(summary(model_leg)$r.squared,2)`).
+A multivariate analysis confirmed strong overall sexual dimorphism across traits (MANOVA: Pillai’s trace = `r myround(summary(manova_model)$stats[1, "Pillai"],2)`, F~`r summary(manova_model)$stats[1, "num Df"]`,`r summary(manova_model)$stats[1, "den Df"]`~ = `r myround(summary(manova_model)$stats[1, "approx F"],2)`, `r pvalue(summary(manova_model)$stats[1, "Pr(>F)"],accuracy = 0.001, add_p=TRUE)`).
 
 #### Assortative mating
 
 There was no evidence of assortative mating.
-The relationship between male and female body size within mating pairs was weak and non-significant (β = −0.23 ± 0.20, P = 0.268), and did not differ from random expectations (P = 0.437).
+The relationship between male and female body size within mating pairs was weak and non-significant ($\beta$ = `r myround(summary(assort)$coefficients[2,1],2)` ± `r myround(summary(assort)$coefficients[2,2],2)`, t = `r myround(summary(assort)$coefficients[2,3],2)`, `r pvalue(summary(assort)$coefficients[2,4],accuracy = 0.001, add_p=TRUE)`), and did not differ from random expectations (P = `r p_val[1]`).
 Thus, mating appeared random with respect to body size.
 
 # Discussion
