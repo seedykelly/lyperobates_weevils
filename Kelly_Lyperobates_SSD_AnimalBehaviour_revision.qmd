@@ -54,9 +54,13 @@ format_p <- function(p, digits = 3) {
 }
 ```
 
+\newpage
+
 # Abstract
 
 Body size can affect fecundity and access to mates in both sexes, yet field estimates of these components of selection are uncommon for females and males of the same population. I sampled paired and unpaired adults of an undescribed flightless New Zealand weevil (*Lyperobates* sp. A) and examined body length, hind leg length, pairing status, female egg load, sexual dimorphism, and size assortment. Females were larger than males in both morphological traits, and longer females carried more eggs, consistent with fecundity selection favouring greater female size. In both sexes, body length was positively associated and hind leg length negatively associated with observed pairing status. The male analysis also supported nonlinear and correlational selection, with the highest predicted pairing probability among relatively large-bodied, short-legged males. A pooled comparison, however, did not clearly demonstrate that this correlational association differed between the sexes. Body length was not assortative within the 25 observed pairs. These results reveal size-dependent nonrandom pairing in both sexes and a fecundity-related advantage of female body size. They show that contemporary components of selection may contribute to female-biased dimorphism without mapping simply onto the magnitude of the observed sex differences.
+
+\newpage
 
 # Introduction
 
