@@ -1,0 +1,336 @@
+---
+format:
+  docx:
+    reference-doc: response_to_reviewers_reference.docx
+    toc: false
+---
+
+**RESPONSE TO REVIEWERS**
+
+**Sexual size dimorphism and multivariate phenotypic selection in a flightless weevil**
+
+**Manuscript ID: ANBEH-S-26-00450**
+
+Dear Dr Vasudeva and Reviewer,
+
+Thank you for the careful and constructive evaluations. I have substantially revised the manuscript in response. The principal changes are a clearer biological rationale for studying selection in both sexes of a wild, poorly known, nonmodel species; expanded treatment of female choice, male choice, mutual choice, and competition as possible causes of size-dependent pairing; new discussion of the shared genome, sex-specific genetic architecture, and inbreeding; and a more concise presentation of the study's limitations. I also added a pooled test of the apparent sex difference in correlational selection, a formal analysis of static allometry, exact geographical coordinates, a fuller description of the digital measurements, a strengthened Ethical Note, field-laboratory information, and a redesigned male response surface. The figures have been renumbered in order of first appearance.
+
+Page and line references refer to the clean revised manuscript.
+
+# Editor
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Reviewer #1 has some major suggestions surrounding the choice of either sex based on size when it comes to mating decisions. My own comments concern inbreeding and inbreeding load within the population because sampling was not extensive and recent evidence suggests that underlying genomic tensions can affect male fitness. Reviewer #1 also points out that the background and Discussion need more relevant information to support the rationale for using the weevils.
+:::
+
+::: {custom-style="Author Response"}
+**response:** I have addressed these linked concerns throughout the revision. The Introduction now explains why this flightless, poorly known taxon is informative for estimating selection on both sexes in the wild and states what is and is not known about its mating behaviour (pages 5–6, lines 83–104). It also develops female choice, male choice, mutual choice, competition, shared genetic architecture, and inbreeding as relevant hypotheses (pages 3–4, lines 35–50). The Discussion returns to these mechanisms while distinguishing them from what can be inferred from the present cross-sectional data (pages 15–17, lines 304–352).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** As you revise your manuscript, please note that the journal requires that you address any animal welfare issues arising from your study within the Methods section, in a separate subsection headed Ethical Note. Address all ethical implications of the experimental design and procedures, including any procedures taken to minimise adverse impacts on the welfare of subjects or to enhance their welfare, for vertebrates and invertebrates alike.
+:::
+
+::: {custom-style="Author Response"}
+**response:** I strengthened the separate Methods subsection headed “Ethical note” (pages 7–8, lines 132–143). It describes the absence of experimental behavioural manipulation, the measures used to minimize handling and unwanted interactions, individual housing, euthanasia before photography and dissection, why formal institutional approval was not required for this invertebrate study, collection and handling under permit from the New Zealand Department of Conservation, and compliance with applicable New Zealand regulations and the ASAB/ABS guidelines.
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Please also include reference to any Field Stations and/or Marine Laboratories in the Methods and Acknowledgements, as per the Guide for Authors.
+:::
+
+::: {custom-style="Author Response"}
+**response:** The Methods now identify the New Zealand Department of Conservation field laboratory on Maud Island (page 7, lines 121–123). The Acknowledgements thank Steve Ward and the Department of Conservation for access to the laboratory and for logistical support (page 19, lines 368–375).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Please prepare a detailed point-by-point response, provide highlighted and non-highlighted versions of the revised manuscript, upload the manuscript and figure source files, and supply a separate Highlights file.
+:::
+
+::: {custom-style="Author Response"}
+**response:** This document provides a point-by-point response. The revision package includes the clean revised manuscript, the editable QMD and R source files, revised figure files, and a separate Highlights file. A version showing the revisions will also be included in the submission package.
+:::
+
+# Reviewer #1
+
+::: {custom-style="Reviewer Comment"}
+**comment:** This is an interesting study that investigates patterns of non-random mating with regards to two morphological measures in both sexes in a wild population of an undescribed *Lyperobates* weevil. The study provides estimated selection gradients for body length and hind leg length based on pairing status and, for females, an additional fecundity estimate from egg load at collection. It is great to see studies looking at selection on both males and females in wild populations of nonmodel species. Overall, the questions are clear, the methods transparent, and the analyses and results straightforward, but the Abstract, Introduction, and Discussion require substantial reframing.
+:::
+
+::: {custom-style="Author Response"}
+**response:** Thank you for this positive assessment and for the suggestions on framing. I have retained the central field study and analytical framework while revising the Abstract, Introduction, and Discussion to emphasize selection on both sexes, the value of a poorly known wild system, and the biological mechanisms that could generate size-dependent pairing.
+:::
+
+## Overall and major comments
+
+::: {custom-style="Reviewer Comment"}
+**comment:** (1) The background explaining why the study was done and why the questions were asked is confusing. In addition to sexual size dimorphism, valuable reasons for such a study include examining selection pressures in both sexes, estimating selection in the wild and in nonmodel organisms, and increasing understanding of a species for which little is known. It is unclear why this undescribed species was chosen. Is anything known about mating duration, remating, and whether females can reject males? If not, make this clear.
+:::
+
+::: {custom-style="Author Response"}
+**response:** I agree. The revised Introduction now explains that paired and unpaired adults of both sexes can be sampled under the same field conditions, that flightlessness makes body and leg morphology plausible contributors to mate searching and attachment, and that the taxon is poorly known (page 5, lines 83–92). It also states explicitly that no systematic observations were collected on mating duration, remating frequency, pair formation, female rejection or detachment, or male–male contests (pages 5–6, lines 92–97). I therefore describe the observations as consistent with, but not proof of, a scramble-competitive mating system. The final paragraph of the Introduction presents four explicit questions, including a direct comparison of the correlational morphology–pairing association between the sexes (page 6, lines 97–104).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** (2) Despite the main result of non-random mating with respect to body size in both males and females, which strongly suggests sexual selection for larger individuals, the Introduction and Discussion give this little attention. Female mate choice for larger males and, in particular, male mate choice for larger females should be mentioned. Males could benefit from mating with females that have a greater capacity for egg production, as body length appears to indicate.
+:::
+
+::: {custom-style="Author Response"}
+**response:** I agree. The Introduction now explains that sexual selection on body size can operate in either sex. It discusses male choice for larger females when fecundity increases with size, female acceptance of larger males, and the possibility that size-dependent pairing reflects female choice, male choice, mutual choice, competition, or a combination of these processes. I added the curculionid *Diaprepes abbreviatus* as an example in which males preferred larger, more fecund females and females accepted larger males more readily (page 3, lines 35–41). The Discussion develops the corresponding hypotheses for *Lyperobates* while making clear that the data do not distinguish choice from encounter, mounting success, competition, attachment, or pair duration (page 15, lines 304–313).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** (3) I appreciate that cross-sectional studies have limitations because they provide a snapshot of the sampled population. However, because the Methods are clear, these limitations should be kept to one or two meaningful places, mainly in the Discussion and Methods. Otherwise, each result feels undermined immediately after it is reported. The study provides valuable estimates of selection on males and females and suggests that size matters; although conclusions cannot be definitive, suggestions can be made.
+:::
+
+::: {custom-style="Author Response"}
+**response:** I agree with the concern and have reduced the repeated qualifications substantially. The Abstract now foregrounds the biological findings (page 2, lines 7–23), and the Results state the observed patterns directly. I retained only brief qualifications needed to define the response variables: egg load is not lifetime fecundity, and observed pairing status is not lifetime reproductive success. The broader limitations are consolidated in one Discussion paragraph (page 17, lines 343–352). The conclusion now emphasizes size-dependent nonrandom pairing, the association between female body length and egg load, and female-biased dimorphism before giving one concise qualification about the sex comparison (page 17, lines 353–359).
+:::
+
+## Abstract
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 6–7: Consider adding more background before going directly to what was done. The reason for the study is missing. Before the sentence beginning on line 7, also state how the animals were collected, namely by sampling mating and non-mating individuals.
+:::
+
+::: {custom-style="Author Response"}
+**response:** The Abstract has been rewritten. It now begins with the biological motivation and immediately states that paired and unpaired adults were sampled from the same wild population (page 2, lines 7–11).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 9–18: There are too many results for an Abstract. Consider removing some and retaining or summarizing only the main findings.
+:::
+
+::: {custom-style="Author Response"}
+**response:** I shortened and consolidated the results in the Abstract. It now reports the central patterns in sexual dimorphism, female egg load, pairing-status selection, the male response surface and pooled sex comparison, and assortment, without the earlier statistical detail (page 2, lines 11–23).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 19–21: There is no need to mention this in the Abstract.
+:::
+
+::: {custom-style="Author Response"}
+**response:** The extended qualification has been removed. The Abstract retains only the brief comparison needed to avoid interpreting the male-only statistical support as evidence of a demonstrated sex difference (page 2, lines 17–19).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 21–24: Why not reverse the arguments in this sentence so that the findings lead, followed by the qualification about whether the measured selection maintains or drove the evolution of sexual size dimorphism?
+:::
+
+::: {custom-style="Author Response"}
+**response:** Revised as suggested. The final sentences now lead with size-dependent nonrandom pairing and the fecundity-related advantage of female body size, then note that contemporary selection does not map simply onto the magnitude of the existing sex differences (page 2, lines 20–23).
+:::
+
+## Introduction
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Line 33: Add that male mate choice for larger females may also contribute to the evolution or increase of dimorphism.
+:::
+
+::: {custom-style="Author Response"}
+**response:** Added, together with an insect review and the *Diaprepes abbreviatus* example (page 3, lines 35–41). The possibility is also developed in the Discussion because female body length predicted egg load (page 15, lines 304–313).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 34–38: Consider explaining that many different selection processes can drive the evolution of sexual size dimorphism and that they can be difficult to separate.
+:::
+
+::: {custom-style="Author Response"}
+**response:** The opening paragraph now distinguishes fecundity selection, sexual selection, viability selection, ecological divergence, developmental processes, and genetic constraints or correlations between the sexes. It also separates evolved dimorphism from contemporary phenotype–fitness associations (page 3, lines 24–34).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 40–42: In comparison with other animal groups such as mammals, female-biased size dimorphism is common among insects.
+:::
+
+::: {custom-style="Author Response"}
+**response:** The Introduction now states that female-biased sexual size dimorphism is particularly common among insects and links this pattern to the frequent positive association between female size and fecundity (page 3, lines 27–31).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** After line 56: Add an example to illustrate the importance of multivariate selection.
+:::
+
+::: {custom-style="Author Response"}
+**response:** I added a concrete example in which body length may influence competitive ability or persistence, whereas leg length may influence movement or the ability to remain attached. The text then explains how quadratic and correlational gradients can reveal high-fitness trait combinations (pages 4–5, lines 65–75).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 57–60: Consider removing this material or connecting it more clearly to examples and to what selection gradients allow researchers to identify.
+:::
+
+::: {custom-style="Author Response"}
+**response:** The passage has been rewritten around the body–leg example. It now defines directional, quadratic, and correlational gradients in direct relation to the biological question (pages 4–5, lines 65–75).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 64–67: Assortative mating can also be a form of mutual mate choice.
+:::
+
+::: {custom-style="Author Response"}
+**response:** Mutual choice is now identified explicitly both in the discussion of selection on body size (page 3, lines 35–41) and in the paragraph on assortative mating (page 5, lines 73–82).
+:::
+
+## Methods
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 101–104: Instead of stating that the sample ratio should not be interpreted as an estimate of the population sex ratio, say that interpreting it as an estimate of the population or operational sex ratio should be treated with caution.
+:::
+
+::: {custom-style="Author Response"}
+**response:** Rephrased as suggested. The Methods now state that the sample ratio should be interpreted cautiously and not as an estimate of the population or operational sex ratio (page 7, lines 114–123).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 109–111: Remove this because the same point is made in the Discussion.
+:::
+
+::: {custom-style="Author Response"}
+**response:** I removed the repeated discussion-level interpretation. I retained one short statement defining egg load as a measure of current reproductive state rather than lifetime fecundity because this is needed to describe the response variable transparently (page 7, lines 124–128). The broader inferential limitation is treated in the Discussion (page 17, lines 343–352).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 131–135: Remove this from the Methods and present it in the Discussion as a limitation on inference.
+:::
+
+::: {custom-style="Author Response"}
+**response:** I removed the extended interpretive discussion and consolidated the general limitations in the Discussion (page 17, lines 343–352). I retained a concise definition of observed pairing status and the processes that could produce it because those statements specify what the response variable represents and the assumption underlying the selection analysis (page 8, lines 145–151).
+:::
+
+## Results
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 225–226: Remove the final part of the sentence and discuss it later as a limitation.
+:::
+
+::: {custom-style="Author Response"}
+**response:** The repeated discussion has been removed. The Results now give the positive association between female body length and egg load directly, with one brief sentence defining the scope of the response variable; the general limitation is discussed later (page 13, lines 246–249; page 17, lines 343–352).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 233–236: The same applies here; discuss this material in the Discussion instead.
+:::
+
+::: {custom-style="Author Response"}
+**response:** The detailed interpretation has been moved to the Discussion. The Results retain one concise sentence noting the possible processes underlying pairing status so that the observed association is not mislabeled as lifetime reproductive success (page 13, lines 250–258; page 17, lines 343–352).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 252–253: Use the term “allometry” when describing traits that scale differently as body length increases.
+:::
+
+::: {custom-style="Author Response"}
+**response:** I added a formal static-allometry analysis rather than applying the term descriptively. The Methods now specify a log–log model of hind leg length as a function of body length, sex, and their interaction (page 8, lines 152–158). Hind leg length increased with body length, but the allometric slope did not differ clearly between the sexes (body length × sex: *P* = 0.223; page 12, lines 233–245).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 254–264: Move the sexual-dimorphism section to the beginning of the Results.
+:::
+
+::: {custom-style="Author Response"}
+**response:** Done. Sexual dimorphism is now the first Results subsection (page 12, lines 230–245).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 283–286: This repeats the qualification at the end of the Abstract.
+:::
+
+::: {custom-style="Author Response"}
+**response:** The repeated qualification has been removed. The Results now report the direct pooled comparison between the sexes, and the broader inferential limitation is treated once in the Discussion (page 14, lines 269–275; page 17, lines 343–352).
+:::
+
+## Discussion
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 302–303: Use “precopulatory success.”
+:::
+
+::: {custom-style="Author Response"}
+**response:** The manuscript now describes observed pairing status as a measure of observed precopulatory success (page 17, line 346).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Line 307: State more clearly that the pattern could reflect female mate choice for larger males.
+:::
+
+::: {custom-style="Author Response"}
+**response:** The revised Discussion states this hypothesis explicitly and distinguishes it from male competition, mounting success, and remaining attached (page 15, lines 304–313).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 313–315: Add a couple of biological hypotheses and an example.
+:::
+
+::: {custom-style="Author Response"}
+**response:** I added hypotheses involving movement, leverage, stability while mounted, and attachment endurance (page 15, lines 304–313). I also added *Callosobruchus maculatus* as a comparative example in which female kicking shortens copulation and reduces damage caused by male genitalia, while stating clearly that these behaviours and effects were not measured in *Lyperobates* (pages 15–16, lines 310–321).
+:::
+
+## Conclusion
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 353–364: Phrase the conclusion with fewer limitations and emphasize that non-random pairing with respect to size was found, that males and females are sexually dimorphic, and that the results suggest that size matters.
+:::
+
+::: {custom-style="Author Response"}
+**response:** The conclusion has been rewritten accordingly. It now leads with nonrandom pairing, female egg load, and female-biased dimorphism, then gives one concise qualification concerning the comparison of correlational selection between the sexes (page 17, lines 353–359).
+:::
+
+# Reviewer #2
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Using a flightless weevil species, the author investigates the direction of sexual size dimorphism and its underlying factors. The sexes did not exhibit opposing responses to the measured traits; the male nonlinear correlational response indicated that larger bodies combined with shorter legs predicted pairing likelihood. Larger females had more eggs, consistent with fecundity selection theory. Overall, this is a well-written paper with sex-specific insights into life-history traits.
+:::
+
+::: {custom-style="Author Response"}
+**response:** Thank you for this positive assessment. I have retained the central analyses while clarifying the biological interpretation and adding a direct pooled comparison of the correlational morphology–pairing association between the sexes. That comparison provided little evidence that the association differed between females and males (*z* = −1.31, *P* = 0.190; page 14, lines 269–275).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Because the weevils were sampled from the wild, could inbreeding load be relevant to the population? A recent beetle study highlights tensions arising from the shared genome, in which even small amounts of inbreeding can be detrimental to male fitness. Could female-biased sexual size dimorphism drag the male genome towards a more feminized state? In the Introduction, after lines 50–53, could evidence from manipulations of inbreeding be used to illuminate misalignment between the sexes in fitness or fitness-related traits?
+:::
+
+::: {custom-style="Author Response"}
+**response:** I agree that inbreeding is a useful hypothesis, but the present sampling provides no pedigree, relatedness, heterozygosity, or genomic-load estimates. I therefore added the mechanism without inferring that this population is inbred. The Introduction now discusses the shared genome, the strong intersexual autosomal genetic correlation for body size and sex-linked variance demonstrated in *Callosobruchus maculatus*, and experimental evidence that six generations of full-sib mating in *Tribolium castaneum* reduced male body size and several reproductive traits (pages 3–4, lines 42–50). The Discussion identifies inbreeding as an unmeasured potential modifier and explicitly states that it cannot be inferred from the restricted spatial sample (page 16, lines 322–336). I have avoided describing the males as “feminized” because the cited inbreeding experiment measured reductions in male morphology and reproductive performance rather than feminization itself.
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Line 91: Are geographical coordinates available for the New Zealand study site?
+:::
+
+::: {custom-style="Author Response"}
+**response:** I added the precise location of the 20-m sampling transect on Te Pākeka/Maud Island (41.023594°S, 173.896832°E) to the Methods (page 6, lines 105–113).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Line 112: In Fiji, was the segmented-line tool used?
+:::
+
+::: {custom-style="Author Response"}
+**response:** Yes. The Methods now specify that the segmented-line tool in Fiji was used (page 7, lines 124–131).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 114–115: Were the leg measurements digital or made with callipers?
+:::
+
+::: {custom-style="Author Response"}
+**response:** The measurements were digital. The Methods now state that body and hind leg length were measured digitally from scaled photographs using Fiji's segmented-line tool, rather than with callipers (page 7, lines 124–131).
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Lines 301–303: In some other weevils, males harass females and cause reproductive-tract scarring and damage. Is anything known about the prolonged attachment behaviour in this species? Why did females not induce detachment, for example by kicking as in *Callosobruchus maculatus*?
+:::
+
+::: {custom-style="Author Response"}
+**response:** I added a focused Discussion paragraph on pair duration and sexual conflict. It describes the *C. maculatus* example and states that attachment duration, kicking, induced detachment, genital morphology, and reproductive-tract scarring were not measured in *Lyperobates*. It also explains that phenotypes associated with prolonged attachment could be overrepresented among cross-sectionally observed pairs (pages 15–16, lines 310–321). This preserves the useful hypothesis without implying that genital damage or kicking occurs in the study species.
+:::
+
+::: {custom-style="Reviewer Comment"}
+**comment:** Figure 4: Can the points within the contours be made clearer, perhaps by using colours that contrast with the background?
+:::
+
+::: {custom-style="Author Response"}
+**response:** The male response surface, now Figure 5 following the corrected order of first appearance, has been redesigned. Unpaired males are shown as white circles and paired males as yellow triangles, both with black borders, against the coloured probability surface. A legend and revised caption identify the two categories.
+:::
+
+Thank you again for the detailed and constructive comments. I believe the revision now communicates the biological rationale more clearly, gives the positive findings appropriate emphasis, and is more precise about what can and cannot be inferred from the cross-sectional design.
